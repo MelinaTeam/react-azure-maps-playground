@@ -1,12 +1,11 @@
-import React from 'react';
+export const code = `
 import { AzureMap, AzureMapsProvider, IAzureMapOptions } from 'react-azure-maps';
 import { AuthenticationType } from 'azure-maps-control';
-import { key } from '../key';
 
 const option: IAzureMapOptions = {
   authOptions: {
     authType: AuthenticationType.subscriptionKey,
-    subscriptionKey: key,
+    subscriptionKey: Your_Subscription_Key,
   },
 };
 
@@ -19,3 +18,4 @@ const DefaultMap = () => (
 );
 
 export default DefaultMap;
+`;

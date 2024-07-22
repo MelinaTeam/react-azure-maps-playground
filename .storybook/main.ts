@@ -9,7 +9,24 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
-    '@storybook/addon-storysource',
+    // '@storybook/addon-storysource',
+    {
+      name: '@storybook/addon-storysource',
+      options: {
+        loaderOptions: {
+          // injectStoryParameters: false,
+          parser: 'typescript',
+        },
+      },
+    },
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          // injectStoryParameters: false,
+        },
+      },
+    },
   ],
   framework: {
     name: '@storybook/react-webpack5',
