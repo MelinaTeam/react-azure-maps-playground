@@ -16,24 +16,17 @@ export default meta;
 
 type Story = StoryObj<typeof BubbleLayer>;
 
-export const ShowColors: Story = {
+export const Basic: Story = {
+  name: 'Basic Bubble Layer',
   args: {
     showBasicBubble: true,
     showNumbers: false,
-    useFilter: false,
   },
 };
-export const ShowNumbers: Story = {
+export const Numbers: Story = {
+  name: 'Add numbers',
   args: {
     showBasicBubble: true,
     showNumbers: true,
-    useFilter: false,
-  },
-};
-export const ShowLandmark: Story = {
-  args: {
-    showBasicBubble: true,
-    showNumbers: true,
-    useFilter: true,
   },
 };

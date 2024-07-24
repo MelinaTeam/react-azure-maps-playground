@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import DefaultMap from '../../examples/DefaultMap';
+import DefaultMap from './DefaultMap';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { code } from './code';
 
 const meta: Meta<typeof DefaultMap> = {
-  title: 'Example/DefaultMap',
+  title: 'Basic Usage/DefaultMap',
   component: DefaultMap,
   tags: ['autodocs'],
+  render: () => <DefaultMap />,
   parameters: {
     layout: 'centered',
     storySource: {

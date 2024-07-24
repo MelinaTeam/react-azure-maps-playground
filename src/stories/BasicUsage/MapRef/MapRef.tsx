@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AzureMap, IAzureMapOptions, useAzureMaps } from 'react-azure-maps';
 import { data, layer, source, AuthenticationType } from 'azure-maps-control';
-import { key } from '../../key';
+import { key } from '../../../key';
 
 const option: IAzureMapOptions = {
   authOptions: {
@@ -11,7 +11,7 @@ const option: IAzureMapOptions = {
 };
 
 type position = { longitude: number; latitude: number };
-export interface MapControlProps {
+export interface MapRefProps {
   // show tile boundaries
   showTileBoundaries?: boolean;
   // change the center of the map
@@ -25,7 +25,7 @@ export interface MapControlProps {
 const dataSourceRef = new source.DataSource();
 const layerRef = new layer.SymbolLayer(dataSourceRef);
 
-export const MapControl = ({ showTileBoundaries = true, mapCenter = getRandomLocation() }: MapControlProps) => {
+const MapRef = ({ showTileBoundaries = true, mapCenter = getRandomLocation() }: MapRefProps) => {
   const { mapRef, isMapReady } = useAzureMaps();
   const toggleTileBoundaries = (showTileBoundaries: boolean) => {
     if (mapRef)
@@ -69,6 +69,8 @@ export const MapControl = ({ showTileBoundaries = true, mapCenter = getRandomLoc
     </div>
   );
 };
+
+export default MapRef;
 
 const getRandomLocation = (): position => {
   const longitude = Math.floor(Math.random() * (180 - -180) + -180);

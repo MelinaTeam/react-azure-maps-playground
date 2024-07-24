@@ -1,15 +1,15 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { AzureMapsProvider } from 'react-azure-maps';
-import { MapControl } from './MapControl';
+import MapRef from './MapRef';
 import { code } from './code';
 
-const meta: Meta<typeof MapControl> = {
-  title: 'Example/MapControl',
-  component: MapControl,
+const meta: Meta<typeof MapRef> = {
+  title: 'Basic Usage/MapRef',
+  component: MapRef,
   render: ({ ...args }) => (
     <AzureMapsProvider>
-      <MapControl {...args} />
+      <MapRef {...args} />
     </AzureMapsProvider>
   ),
   parameters: {
@@ -22,9 +22,9 @@ const meta: Meta<typeof MapControl> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof MapControl>;
+type Story = StoryObj<typeof MapRef>;
 
-export const MapControlExample: Story = {
+export const MapRefExample: Story = {
   args: {
     showTileBoundaries: true,
     mapCenter: { longitude: 120, latitude: 23.5 },

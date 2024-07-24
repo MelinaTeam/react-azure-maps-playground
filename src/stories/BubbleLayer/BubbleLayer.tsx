@@ -13,36 +13,6 @@ import { wrapperStyles } from '../../examples/RouteExample';
 export interface BubbleLayerProps {
   showBasicBubble: boolean;
   showNumbers: boolean;
-  useFilter: boolean;
-}
-
-function mouseOn(e: any) {
-  e.map.getCanvas().style.cursor = 'pointer';
-}
-
-function mouseLeave(e: any) {
-  e.map.getCanvas().style.cursor = '';
-}
-
-function clusterClicked(e: any) {
-  if (e && e.shapes && e.shapes.length > 0 && e.shapes[0].properties.cluster) {
-    //Get the clustered point from the event.
-    const cluster = e.shapes[0];
-
-    //Get the cluster expansion zoom level. This is the zoom level at which the cluster starts to break apart.
-    e.map.sources
-      .getById('BubbleLayer DataSourceProvider')
-      .getClusterExpansionZoom(cluster.properties.cluster_id)
-      .then(function (zoom: any) {
-        //Update the map camera to be centered over the cluster.
-        e.map.setCamera({
-          center: cluster.geometry.coordinates,
-          zoom: zoom,
-          type: 'ease',
-          duration: 200,
-        });
-      });
-  }
 }
 
 const option: IAzureMapOptions = {
@@ -87,11 +57,6 @@ const basicBubbleLayer = (
     id={'BubbleLayer LayerProvider'}
     options={bubbleLayerOptions}
     type="BubbleLayer"
-    events={{
-      mouseenter: mouseOn,
-      mouseleave: mouseLeave,
-      click: clusterClicked,
-    }}
   ></AzureMapLayerProvider>
 );
 
@@ -111,17 +76,7 @@ const numbersForBubbleLayer = (
   ></AzureMapLayerProvider>
 );
 
-const filterForBubbleLayer = (
-  <AzureMapLayerProvider
-    id={'BubbleLayer3 LayerProvider'}
-    options={{
-      filter: ['!', ['has', 'point_count']], //Filter out clustered points from this layer.
-    }}
-    type="SymbolLayer"
-  ></AzureMapLayerProvider>
-);
-
-const BubbleLayer = ({ showBasicBubble, showNumbers, useFilter }: BubbleLayerProps) => {
+const BubbleLayer = ({ showBasicBubble, showNumbers }: BubbleLayerProps) => {
   return (
     <div style={wrapperStyles.map}>
       <AzureMapsProvider>
@@ -144,7 +99,6 @@ const BubbleLayer = ({ showBasicBubble, showNumbers, useFilter }: BubbleLayerPro
             >
               {showBasicBubble ? basicBubbleLayer : <></>}
               {showNumbers ? numbersForBubbleLayer : <></>}
-              {useFilter ? filterForBubbleLayer : <></>}
             </AzureMapDataSourceProvider>
           </AzureMap>
         </div>
