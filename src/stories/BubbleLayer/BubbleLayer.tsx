@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   AzureMap,
   AzureMapDataSourceProvider,
   AzureMapLayerProvider,
   AzureMapsProvider,
   IAzureMapOptions,
+  IAzureMapLayerProps,
+  AzureMapLayerContext,
 } from 'react-azure-maps';
 import { AuthenticationType } from 'azure-maps-control';
 import { key } from '../../key';
@@ -77,6 +79,8 @@ const numbersForBubbleLayer = (
 );
 
 const BubbleLayer = ({ showBasicBubble, showNumbers }: BubbleLayerProps) => {
+  const { layerRef } = useContext<IAzureMapLayerProps>(AzureMapLayerContext);
+  useEffect(() => {}, [showBasicBubble]);
   return (
     <div style={wrapperStyles.map}>
       <AzureMapsProvider>

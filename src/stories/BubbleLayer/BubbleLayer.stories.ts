@@ -5,6 +5,7 @@ import { code } from './code';
 const meta: Meta<typeof BubbleLayer> = {
   title: 'Example/BubbleLayer',
   component: BubbleLayer,
+  // tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     storySource: {
