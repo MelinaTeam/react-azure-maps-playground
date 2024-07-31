@@ -19,4 +19,4 @@ export default meta;
 
 type Story = StoryObj<typeof DefaultMap>;
 
-export const DefaultMapExample: Story = {};
+export const Example: Story = {};

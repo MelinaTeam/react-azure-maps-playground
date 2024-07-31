@@ -1,0 +1,94 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs/blocks';
+
+import * as DefaultMapStories from './stories/BasicUsage/DefaultMap/DefaultMap.stories';
+
+import { code } from './stories/BasicUsage/DefaultMap/code';
+
+# Getting Started
+
+Wellcome ! <br/>
+**react-azure-maps** is the React wrapper for [Azure Maps](https://azure.microsoft.com/pl-pl/services/azure-maps/). <br/>
+This guide will help you get started with it and create your first map.
+
+## Table of contents
+- [Installation](#installation)
+- [Styling](#styling)
+- [Create a map](#create-a-map)
+- [Authentication](#authentication)
+- [Introduction](#introduction)
+
+## Installation
+
+Use the package manager `npm` or `yarn`
+
+```bash
+npm install react-azure-maps
+```
+
+```bash
+yarn add react-azure-maps
+```
+
+## Styling
+Embed the following css to your application. <br/>
+The stylesheet is required for the marker, popup and control components in `react-azure-maps` to work properly.
+```javascript
+import 'azure-maps-control/dist/atlas.min.css'
+```
+## Create a map
+Let's create a simple map with the default style.
+
+{/* show default map */}
+<Canvas of={DefaultMapStories.Example} sourceState="none" />
+
+<Source code={code} />
+
+## Authentication
+
+Update the `authOptions` property in the option to authenticate with Azure Maps. <br/>
+The subscription key is intended for **development environments** only and must not be utilized in a production application.
+#### AAD
+```javascript
+authOptions: {
+    authType: AuthenticationType.aad,
+    clientId: '...',
+    aadAppId: '...',
+    aadTenant: '...'
+}
+```
+#### Anonymous
+```javascript
+authOptions: {
+    authType: AuthenticationType.anonymous,
+    clientId: '...',
+    getToken: (resolve, reject) => {
+        // URL to your authentication service that retrieves an Azure Active Directory Token.
+        var tokenServiceUrl = "https://example.com/api/GetAzureMapsToken";
+        fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
+    }
+}
+```
+
+#### SAS Token
+```javascript
+authOptions: {
+    authType: AuthenticationType.sas,
+    getToken: (resolve, reject) => {
+        // URL to your authentication service that retrieves a SAS Token.
+        var tokenServiceUrl = "https://example.com/api/GetSASToken";
+        fetch(tokenServiceUrl).then(r => r.text()).then(token => resolve(token));
+    }
+}
+```
+## Introduction
+The library is implemented under the hood on `Contexts`. <br/>
+There are three main references that depend on the basic `Azure Maps API`:
+#### AzureMapProvider 
+    - Provides the map instance and references to the map.
+    - See [Default Map](#create-a-map) as an example.
+#### AzureMapDataSourceProvider
+    - provides the data source instance and references to the data source.
+    - See [Data Visualization]() for more usages.
+#### AzureMapLayerProvider
+    - provides the layer instance and references to the layer.
+    - See [Data Visualization]() and for more usages.

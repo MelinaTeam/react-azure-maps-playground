@@ -9,8 +9,8 @@ import {
   AzureMapLayerContext,
 } from 'react-azure-maps';
 import { AuthenticationType } from 'azure-maps-control';
-import { key } from '../../key';
-import { wrapperStyles } from '../../examples/RouteExample';
+import { key } from '../../../key';
+import { wrapperStyles } from '../../../examples/RouteExample';
 
 export interface BubbleLayerProps {
   showBasicBubble: boolean;
