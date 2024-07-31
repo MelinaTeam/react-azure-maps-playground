@@ -3,7 +3,7 @@ import BubbleLayer from './BubbleLayer';
 import { code } from './code';
 
 const meta: Meta<typeof BubbleLayer> = {
-  title: 'Example/BubbleLayer',
+  title: 'Data Visualization/Bubble Layer',
   component: BubbleLayer,
   // tags: ['autodocs'],
   parameters: {
