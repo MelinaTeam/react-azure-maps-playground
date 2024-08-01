@@ -4,7 +4,7 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 import { code } from './code';
 
 const meta: Meta<typeof DefaultMap> = {
-  title: 'Basic Usage/DefaultMap',
+  title: 'Getting Started',
   component: DefaultMap,
   tags: ['autodocs'],
   render: () => <DefaultMap />,

@@ -1,8 +1,11 @@
 import { Meta, Canvas, Source } from '@storybook/addon-docs/blocks';
 
-import * as DefaultMapStories from './stories/BasicUsage/DefaultMap/DefaultMap.stories';
+import * as DefaultMapStories from './DefaultMap.stories';
+import DefaultMap from './DefaultMap';
 
-import { code } from './stories/BasicUsage/DefaultMap/code';
+import { code } from './code';
+
+<Meta of={DefaultMapStories.Example} />
 
 # Getting Started
 
@@ -39,8 +42,7 @@ import 'azure-maps-control/dist/atlas.min.css'
 Let's create a simple map with the default style.
 
 {/* show default map */}
-<Canvas of={DefaultMapStories.Example} sourceState="none" />
-
+<DefaultMap/>
 <Source code={code} />
 
 ## Authentication

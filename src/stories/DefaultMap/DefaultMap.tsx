@@ -1,7 +1,7 @@
 import React from 'react';
 import { AzureMap, AzureMapsProvider, IAzureMapOptions, IAzureMapControls, AuthenticationType } from 'react-azure-maps';
 // import { AuthenticationType } from 'azure-maps-control';
-import { key } from '../../../key';
+import { key } from '../../key';
 
 const authOption: IAzureMapOptions = {
   authOptions: {

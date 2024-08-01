@@ -5,7 +5,7 @@ import MapRef from './MapRef';
 import { code } from './code';
 
 const meta: Meta<typeof MapRef> = {
-  title: 'Basic Usage/MapRef',
+  title: 'Basic Usage/Map Reference',
   component: MapRef,
   render: ({ ...args }) => (
     <AzureMapsProvider>
