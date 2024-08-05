@@ -17,7 +17,7 @@ export interface DefaultMapProps {
 
 const DefaultMap = ({ options, controls }: DefaultMapProps) => (
   <AzureMapsProvider>
-    <div style={{ height: '300px', width: '700px' }}>
+    <div className="defaultMap">
       <AzureMap options={{ ...options, ...authOption }} controls={controls} />
     </div>
   </AzureMapsProvider>

@@ -1,0 +1,57 @@
+import { Canvas, Meta, Source } from '@storybook/blocks';
+import { AzureMapsProvider } from 'react-azure-maps';
+import SetStyle from './setStyle';
+import SetCenter from './setCenter';
+import { setCenterCode } from './code';
+
+<Meta title="Basic Usage/Map Reference"/>
+
+# Map Reference
+After the map object has been rendered, you can still make adjustments to the map using the `mapRef`.
+When accessing the map object, check `isMapReady` to make sure the map is fully loaded: <br/>
+
+<Source code={`
+import { AzureMap, useAzureMaps } from 'react-azure-maps';
+import { useEffect } from 'react';
+
+const YourComponent = () => {
+    const { mapRef, isMapReady } = useAzureMaps();
+
+    useEffect(() => {
+        if (isMapReady && mapRef)
+            // do something with mapRef
+    }, [isMapReady]);
+
+    return (
+        <AzureMap options={your_options}></AzureMap>
+    );
+}
+`}/>
+
+Remember to wrap your component with AzureMapsProvider to provide the necessary context:
+
+<Source code={`
+import { AzureMapsProvider } from 'react-azure-maps';
+import YourComponent from './YourComponent';
+
+<AzureMapsProvider>
+    <YourComponent/>
+</AzureMapsProvider>
+`}/>
+
+## Examples
+In the first example, we use the `setCamera()` function to change the center of the map. <br/>
+Click the button to see the effect.
+
+<AzureMapsProvider>
+    <SetCenter/>
+</AzureMapsProvider>
+
+<Source code={setCenterCode}/>
+
+In the second example, we use the `setStyle()` function to change the map's display style. 
+Click the button to decide whether to show tile boundaries.
+
+<AzureMapsProvider>
+    <SetStyle/>
+</AzureMapsProvider>

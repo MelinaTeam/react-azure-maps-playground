@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
 import 'azure-maps-control/dist/atlas.min.css';
+import '../src/Storybook.css';
 import { Story, Canvas } from '@storybook/addon-docs';
 
 const preview: Preview = {
@@ -9,6 +10,11 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
+      },
+    },
+    options: {
+      storySort: {
+        order: ['Getting Started', 'Basic Usage', ['*', 'Map Reference'], '*', 'Data Visualization', ['Introduction']],
       },
     },
     // decorators: [

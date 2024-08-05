@@ -1,9 +1,17 @@
 import { Canvas, Meta, Source } from '@storybook/blocks';
 
+import { code } from './code';
+
 import * as HtmlMarkerStories from './HtmlMarker.stories';
 
 <Meta of={HtmlMarkerStories} />
 
 # HTML Marker
+The HtmlMarker class has a default style. <br/>
+You can customize the marker by setting the `options` of the marker. 
 
 <Canvas of={HtmlMarkerStories.Example} sourceState="none" />
+
+{/* show basic code */}
+
+<Source code={code} />

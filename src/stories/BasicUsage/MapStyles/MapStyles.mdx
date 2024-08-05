@@ -1,0 +1,28 @@
+import { Meta, Source } from '@storybook/blocks';
+
+<Meta title="Basic Usage/Map Styles"/>
+
+# Map Styles
+
+You can change the style of the map by passing the `styleOptions` prop like this: <br/>
+
+<Source code={`
+import { AzureMap, AzureMapsProvider } from 'react-azure-maps';
+
+const Your_Component = () => {
+  return (
+    <AzureMapsProvider>
+        <AzureMap
+            options={your_options}
+            styleOptions={{
+                showLabels: false,
+                showLogo: false,
+                renderWorldCopies: false,
+            }}
+        ></AzureMap>
+    </AzureMapsProvider>
+  );
+};
+`}/>
+
+For more properties, see the documentation for [StyleOptions](https://learn.microsoft.com/en-us/javascript/api/azure-maps-control/atlas.styleoptions?view=azure-maps-typescript-latest).

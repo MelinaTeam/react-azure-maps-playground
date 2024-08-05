@@ -3,7 +3,7 @@ import MapControl from './MapControl';
 import { ControlOptions } from 'react-azure-maps';
 
 const meta: Meta<typeof MapControl> = {
-  title: 'Basic Usage/Map Control',
+  title: 'Basic Usage/Map Controls',
   render: ({ ...args }) => <MapControl {...args} />,
   component: MapControl,
   tags: ['autodocs'],

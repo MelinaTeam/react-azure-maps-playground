@@ -1,0 +1,70 @@
+import { Canvas, Meta, Source } from '@storybook/blocks';
+import BubbleLayer from './BubbleLayer/BubbleLayer';
+
+<Meta title="Data Visualization/Introduction"/>
+
+
+# Data Visualization
+**react-azure-maps** provides a set of components to help you visualize data on a map like this: <br/>
+
+<BubbleLayer/>
+
+We will need 2 kinds of components to visualize data on a map:
+1. `<AzureMapDataSourceProvider>` : to provide your data to the map.
+2. `<AzureMapLayerProvider>` : to create a visualization layer on the map based on your data.
+
+Therefore, the basic structure of a data visualization component is as follows:
+
+<Source code= {`
+import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
+
+<AzureMapsProvider>
+    <AzureMap options={your_options}>
+        <AzureMapDataSourceProvider 
+            id="your_layer_id" 
+            collection={your_data}>
+            <AzureMapLayerProvider
+                type="layer_type"
+                options={your_layer_options}
+            />
+        </AzureMapDataSourceProvider>
+    </AzureMap>
+</AzureMapsProvider>
+`} />
+## Create a data source
+To create a data source, you can pass the data to the `collection` prop in various ways: <br/>
+
+You can specify a location by passing a data point:
+<Source code={`
+<AzureMapDataSourceProvider 
+    collection = { new atlas.data.Point([0,0]) }
+    > ...`}
+    />
+Add more details via the `Feature` object like this: <br/>
+<Source code=
+{`<AzureMapDataSourceProvider 
+    collection = { atlas.data.Feature(new atlas.data.Point([0,0])) }
+    > ...`}
+/>
+An array of data points is accepted: <br/>
+<Source code={`
+<AzureMapDataSourceProvider 
+    collection = {[
+        new atlas.data.Point([-73.985708, 40.75773]),
+        new atlas.data.Point([-73.985600, 40.76542]),
+        new atlas.data.Point([-73.985550, 40.77900]),
+        new atlas.data.Point([-73.975550, 40.74859]),
+        new atlas.data.Point([-73.968900, 40.78859])]}
+        > ...`}
+    />
+You can also provide the data by passing the `dataFromUrl` prop like this: <br/>
+<Source code={`
+<AzureMapDataSourceProvider 
+    dataFromUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson">
+    ...
+</AzureMapDataSourceProvider>
+`} />
+
+<br/>
+Now that you have created a data source, you can create a visualization layer on the map. <br/>
+See expamples below for further details.

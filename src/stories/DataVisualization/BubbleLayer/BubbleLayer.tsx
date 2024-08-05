@@ -1,114 +1,56 @@
-import React, { useContext, useEffect } from 'react';
+import { mapOptions } from '../../../key';
 import {
   AzureMap,
+  AzureMapsProvider,
   AzureMapDataSourceProvider,
   AzureMapLayerProvider,
-  AzureMapsProvider,
-  IAzureMapOptions,
-  IAzureMapLayerProps,
   AzureMapLayerContext,
+  IAzureMapLayerProps,
 } from 'react-azure-maps';
-import { AuthenticationType } from 'azure-maps-control';
-import { key } from '../../../key';
-import { wrapperStyles } from '../../../examples/RouteExample';
+import { BubbleLayerOptions } from 'azure-maps-control';
+import atlas from 'azure-maps-control';
+import Test from './Test';
 
-export interface BubbleLayerProps {
-  showBasicBubble: boolean;
-  showNumbers: boolean;
-}
+const collection = generateRandomPoints();
 
-const option: IAzureMapOptions = {
-  authOptions: {
-    authType: AuthenticationType.subscriptionKey,
-    subscriptionKey: key,
-  },
-  center: [-97, 39],
-  zoom: 3,
-  style: 'night',
-  view: 'Auto',
-};
-
-const bubbleLayerOptions = {
-  //Scale the size of the clustered bubble based on the number of points inthe cluster.
-  radius: [
-    'step',
-    ['get', 'point_count'],
-    20, //Default of 20 pixel radius.
-    100,
-    30, //If point_count >= 100, radius is 30 pixels.
-    750,
-    40, //If point_count >= 750, radius is 40 pixels.
-  ],
-
-  //Change the color of the cluster based on the value on the point_cluster property of the cluster.
-  color: [
-    'step',
-    ['get', 'point_count'],
-    'rgba(0,255,0,0.8)', //Default to green.
-    100,
-    'rgba(255,255,0,0.8)', //If the point_count >= 100, color is yellow.
-    750,
-    'rgba(255,0,0,0.8)', //If the point_count >= 100, color is red.
-  ],
-  strokeWidth: 0,
-  filter: ['has', 'point_count'], //Only rendered data points which have a point_count property, which clusters do.
-};
-
-const basicBubbleLayer = (
-  <AzureMapLayerProvider
-    id={'BubbleLayer LayerProvider'}
-    options={bubbleLayerOptions}
-    type="BubbleLayer"
-  ></AzureMapLayerProvider>
-);
-
-const numbersForBubbleLayer = (
-  <AzureMapLayerProvider
-    id={'BubbleLayer2 LayerProvider'}
-    options={{
-      iconOptions: {
-        image: 'none', //Hide the icon image.
-      },
-      textOptions: {
-        textField: ['get', 'point_count_abbreviated'],
-        offset: [0, 0.4],
-      },
-    }}
-    type="SymbolLayer"
-  ></AzureMapLayerProvider>
-);
-
-const BubbleLayer = ({ showBasicBubble, showNumbers }: BubbleLayerProps) => {
-  const { layerRef } = useContext<IAzureMapLayerProps>(AzureMapLayerContext);
-  useEffect(() => {}, [showBasicBubble]);
+const BubbleLayer = ({ radius, color, opacity, strokeColor, strokeWidth, strokeOpacity, blur }: BubbleLayerOptions) => {
   return (
-    <div style={wrapperStyles.map}>
-      <AzureMapsProvider>
-        <div style={{ height: '300px', width: '700px' }}>
-          <AzureMap options={option}>
-            <AzureMapDataSourceProvider
-              id={'BubbleLayer DataSourceProvider'}
-              dataFromUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+    <AzureMapsProvider>
+      <div className="defaultMap">
+        <AzureMap options={mapOptions}>
+          <AzureMapDataSourceProvider id="BubbleLayer DataSourceProvider" collection={collection}>
+            <AzureMapLayerProvider
+              type="BubbleLayer"
               options={{
-                //Tell the data source to cluster point data.
-                cluster: true,
-
-                //The radius in pixels to cluster points together.
-                clusterRadius: 45,
-
-                //The maximium zoom level in which clustering occurs.
-                //If you zoom in more than this, all points are rendered as symbols.
-                clusterMaxZoom: 15,
+                radius,
+                color,
+                opacity,
+                strokeColor,
+                strokeWidth,
+                strokeOpacity,
+                blur,
               }}
-            >
-              {showBasicBubble ? basicBubbleLayer : <></>}
-              {showNumbers ? numbersForBubbleLayer : <></>}
-            </AzureMapDataSourceProvider>
-          </AzureMap>
-        </div>
-      </AzureMapsProvider>
-    </div>
+            />
+            <Test />
+          </AzureMapDataSourceProvider>
+        </AzureMap>
+      </div>
+    </AzureMapsProvider>
   );
 };
+
+function generateRandomPoints() {
+  var layerData = [];
+
+  for (var i = 0; i < 50; i++) {
+    layerData.push(
+      new atlas.data.Feature(new atlas.data.Point([Math.random() * 360 - 180, Math.random() * 170 - 85]), {
+        title: 'Pin_' + i,
+      }),
+    );
+  }
+
+  return layerData;
+}
 
 export default BubbleLayer;

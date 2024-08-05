@@ -4,10 +4,33 @@ import { code } from './code';
 
 import * as BubbleLayerStories from './BubbleLayer.stories';
 
+import BubbleLayer from './BubbleLayer';
+
 <Meta of={BubbleLayerStories} />
 
 # Bubble Layer
 
-<Canvas of={BubbleLayerStories.Numbers} sourceState="none" />
+Bubble layers render points as circles on the map with a fixed pixel radius.<br/>
+You can customize the appearance of the bubbles by passing the `options` prop.<br/>
+For more properties, see the documentation [BubbleLayerOptions](https://learn.microsoft.com/en-us/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-maps-typescript-latest).
 
-<Source code={code} dark />
+<BubbleLayer/>
+
+{/* <Canvas of={BubbleLayerStories.Example} sourceState="none" /> */}
+
+<Source code={`
+import { AzureMapLayerProvider } from 'react-azure-maps';
+
+<AzureMapLayerProvider
+    type="BubbleLayer"
+    options={{
+        radius: 10,
+        color: 'DodgerBlue',
+        opacity: 1,
+        strokeColor: 'DarkBlue',
+        strokeWidth: 2,
+        strokeOpacity: 1,
+        blur: 0,
+    }}
+/>
+`} />
