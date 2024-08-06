@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import MapControl from './MapControl';
 import { ControlOptions } from 'react-azure-maps';
+import { ControlPosition } from 'azure-maps-control';
 
 const meta: Meta<typeof MapControl> = {
   title: 'Basic Usage/Map Controls',
@@ -17,64 +18,44 @@ type Story = StoryObj<typeof MapControl>;
 export const StyleControl: Story = {
   name: 'Style Control',
   args: {
-    controls: [
-      {
-        controlName: 'StyleControl',
-        controlOptions: { mapStyles: 'all' },
-        options: { position: 'top-right' } as ControlOptions,
-      },
-    ],
+    controlName: 'StyleControl',
+    controlOptions: { mapStyles: 'all' },
+    position: 'top-right' as ControlPosition,
   },
 };
 export const ZoomControl: Story = {
   name: 'Zoom Control',
   args: {
-    controls: [
-      {
-        controlName: 'ZoomControl',
-        options: { position: 'top-right' } as ControlOptions,
-      },
-    ],
+    controlName: 'ZoomControl',
+    position: 'top-right' as ControlPosition,
   },
 };
 export const CompassControl: Story = {
   name: 'Compass Control',
   args: {
-    controls: [
-      {
-        controlName: 'CompassControl',
-        controlOptions: { rotationDegreesDelta: 10, style: 'dark' },
-        options: { position: 'bottom-right' } as ControlOptions,
-      },
-    ],
+    controlName: 'CompassControl',
+    controlOptions: { rotationDegreesDelta: 10, style: 'dark' },
+    position: 'top-right' as ControlPosition,
   },
 };
 export const PitchControl: Story = {
   name: 'Pitch Control',
   args: {
-    controls: [
-      {
-        controlName: 'PitchControl',
-        controlOptions: { pitchDegreesDelta: 5, style: 'dark' },
-        options: { position: 'bottom-right' } as ControlOptions,
-      },
-    ],
+    controlName: 'PitchControl',
+    controlOptions: { pitchDegreesDelta: 5, style: 'dark' },
+    position: 'top-right' as ControlPosition,
   },
 };
 export const TrafficControl: Story = {
   name: 'Traffic Control',
   args: {
-    controls: [
-      {
-        controlName: 'TrafficControl',
-        controlOptions: { incidents: true },
-        options: { position: 'top-left' } as ControlOptions,
-      },
-      {
-        controlName: 'TrafficLegendControl',
-        controlOptions: {},
-        options: { position: 'bottom-left' } as ControlOptions,
-      },
-    ],
+    controlName: 'TrafficControl',
+    controlOptions: { incidents: true },
+    position: 'top-right' as ControlPosition,
   },
+  // {
+  //   controlName: 'TrafficLegendControl',
+  //   controlOptions: {},
+  //   options: { position: 'bottom-left' } as ControlOptions,
+  // },
 };
