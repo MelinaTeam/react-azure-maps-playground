@@ -1,0 +1,25 @@
+import { Canvas, Meta, Source } from '@storybook/blocks';
+
+import * as HtmlMarkerStories from './HtmlMarker.stories';
+
+import HtmlMarker from './HtmlMarker';
+
+<Meta of={HtmlMarkerStories} />
+
+# HTML Marker
+The HtmlMarker class has a default style. <br/>
+Following is a simple example of how to use the HtmlMarker component. <br/>
+You can customize the marker by setting the [options prop](https://learn.microsoft.com/en-us/javascript/api/azure-maps-control/atlas.htmlmarkeroptions?view=azure-maps-typescript-latest). 
+
+<HtmlMarker text='10'/>
+{/* show basic code */}
+
+<Source code={`
+<AzureMapHtmlMarker options={{ text: '10' }}/>
+`} />
+
+You can also pass a **custom component** to the marker. <br/>
+Noted that the custom component will be rendered into a static element.
+<Source code={`
+<AzureMapHtmlMarker options={{ position }} markerContent={<YourComponent/>} />
+`} />

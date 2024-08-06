@@ -14,7 +14,15 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Getting Started', 'Basic Usage', ['*', 'Map Reference'], '*', 'Data Visualization', ['Introduction']],
+        order: [
+          'Getting Started',
+          'Basic Usage',
+          ['*', 'Map Reference'],
+          'Map Annotations',
+          '*',
+          'Data Visualization',
+          ['Introduction'],
+        ],
       },
     },
     // decorators: [

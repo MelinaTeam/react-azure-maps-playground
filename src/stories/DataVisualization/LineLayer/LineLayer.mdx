@@ -1,0 +1,29 @@
+import { Canvas, Meta, Source } from '@storybook/blocks';
+
+import LineLayer from './LineLayer';
+
+<Meta title="Data Visualization/Line Layer"/>
+
+# Line Layer
+
+A line layer can be used to render LineString and MultiLineString features as paths or routes on the map.<br/> 
+It can also be used to render the outline of Polygon and MultiPolygon features.<br/><br/>
+Following code shows how to add a simple line layer:<br/>
+For more available properties, see the documentation [LineLayerOptions](https://learn.microsoft.com/en-us/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-maps-typescript-latest)
+
+<LineLayer/>
+
+<Source code={`
+import { AzureMapLayerProvider } from 'react-azure-maps';
+
+<AzureMapLayerProvider
+    type="LineLayer"
+    options={{
+        strokeColor: 'DodgerBlue',
+        strokeWidth: 4,
+        strokeOpacity: 1,
+        blur: 0,
+        lineCap: 'round',
+        translate: [0, 0],
+    }}
+`}/>

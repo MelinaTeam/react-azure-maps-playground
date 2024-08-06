@@ -6,12 +6,11 @@ import { code } from './code';
 const meta: Meta<typeof DefaultMap> = {
   title: 'Getting Started',
   component: DefaultMap,
-  tags: ['autodocs'],
   render: () => <DefaultMap />,
   parameters: {
     layout: 'centered',
     storySource: {
-      source: code, //Put your code here
+      source: code,
     },
   },
 };

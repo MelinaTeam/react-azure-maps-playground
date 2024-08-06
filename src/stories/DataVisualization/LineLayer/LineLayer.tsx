@@ -1,27 +1,30 @@
 import { mapOptions } from '../../../key';
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
-import { BubbleLayerOptions } from 'azure-maps-control';
+import { LineLayerOptions } from 'azure-maps-control';
 import atlas from 'azure-maps-control';
-import Test from './Test';
 
-const collection = generateRandomPoints();
+const collection = new atlas.data.LineString([
+  [-74.0039, 40.88029],
+  [-87.583, 41.93497],
+  [-105.20507, 39.77476],
+  [-122.43164, 47.66538],
+]);
 
-const BubbleLayer = ({ radius, color, opacity, strokeColor, strokeWidth, strokeOpacity, blur }: BubbleLayerOptions) => {
+const LineLayer = ({ strokeColor, strokeWidth, strokeOpacity, blur, lineCap, translate }: LineLayerOptions) => {
   return (
     <AzureMapsProvider>
       <div className="defaultMap">
-        <AzureMap options={mapOptions}>
-          <AzureMapDataSourceProvider id="BubbleLayer DataSourceProvider" collection={collection}>
+        <AzureMap options={{ ...mapOptions, center: [-105.20507, 39.77476], zoom: 1.4 }}>
+          <AzureMapDataSourceProvider id="LineLayer DataSourceProvider" collection={collection}>
             <AzureMapLayerProvider
-              type="BubbleLayer"
+              type="LineLayer"
               options={{
-                radius,
-                color,
-                opacity,
                 strokeColor,
                 strokeWidth,
                 strokeOpacity,
                 blur,
+                lineCap,
+                translate,
               }}
             />
           </AzureMapDataSourceProvider>
@@ -45,4 +48,4 @@ function generateRandomPoints() {
   return layerData;
 }
 
-export default BubbleLayer;
+export default LineLayer;

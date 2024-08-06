@@ -1,21 +1,11 @@
-import React from 'react';
-import {
-  AzureMap,
-  AzureMapHtmlMarker,
-  AzureMapLayerProvider,
-  AzureMapsProvider,
-  IAzureMapOptions,
-} from 'react-azure-maps';
+import { AzureMap, AzureMapHtmlMarker, AzureMapsProvider } from 'react-azure-maps';
 import { HtmlMarkerOptions, SymbolLayerOptions } from 'azure-maps-control';
-import { mapOptions } from '../../key';
-import atlas from 'azure-maps-control';
-
-// console.log(atlas.getAllImageTemplateNames());
+import { mapOptions } from '../../../key';
 
 const HtmlMarker = ({ color, text, position }: HtmlMarkerOptions) => {
   return (
     <AzureMapsProvider>
-      <div style={{ width: '700px', height: '300px' }}>
+      <div className="defaultMap">
         <AzureMap options={mapOptions}>
           <AzureMapHtmlMarker
             //   key={rendId}
