@@ -15,12 +15,16 @@ export interface DefaultMapProps {
   controls?: IAzureMapControls[];
 }
 
-const DefaultMap = ({ options, controls }: DefaultMapProps) => (
-  <AzureMapsProvider>
-    <div className="defaultMap">
-      <AzureMap options={{ ...options, ...authOption }} controls={controls} />
-    </div>
-  </AzureMapsProvider>
-);
+const DefaultMap = ({ options, controls }: DefaultMapProps) => {
+  // console.log(process.env.REACT_APP_AZURE_MAPS_KEY)
+
+  return (
+    <AzureMapsProvider>
+      <div className="defaultMap">
+        <AzureMap options={{ ...options, ...authOption }} controls={controls} />
+      </div>
+    </AzureMapsProvider>
+  );
+};
 
 export default DefaultMap;

@@ -10,7 +10,7 @@ import {
 } from 'react-azure-maps';
 import { AuthenticationType } from 'azure-maps-control';
 import { key } from '../../../key';
-import { wrapperStyles } from '../../../examples/RouteExample';
+// import { wrapperStyles } from '../../../examples/RouteExample';
 
 export interface BubbleLayerProps {
   showBasicBubble: boolean;
@@ -82,7 +82,7 @@ const BubbleLayer = ({ showBasicBubble, showNumbers }: BubbleLayerProps) => {
   const { layerRef } = useContext<IAzureMapLayerProps>(AzureMapLayerContext);
   useEffect(() => {}, [showBasicBubble]);
   return (
-    <div style={wrapperStyles.map}>
+    <div>
       <AzureMapsProvider>
         <div style={{ height: '300px', width: '700px' }}>
           <AzureMap options={option}>
