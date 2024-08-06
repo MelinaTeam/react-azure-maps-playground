@@ -11,22 +11,28 @@ const SetStyle = () => {
   const { mapRef, isMapReady } = useAzureMaps();
   const [showTileBoundaries, setShowTileBoundaries] = useState(false);
 
-  const toggleTileBoundaries = (showTileBoundaries: boolean) => {
-    if (mapRef)
+  useEffect(() => {
+    if (isMapReady && mapRef)
       // toggle tile boundaries
       mapRef.setStyle({ showTileBoundaries });
-  };
+  }, [isMapReady, showTileBoundaries]);
 
-  useEffect(() => {
-    if (isMapReady && mapRef) {
-      // toggle tile boundaries
-      toggleTileBoundaries(showTileBoundaries);
-    }
-  }, [isMapReady]);
+  // const toggleTileBoundaries = (showTileBoundaries: boolean) => {
+  //   if (mapRef)
+  //     // toggle tile boundaries
+  //     mapRef.setStyle({ showTileBoundaries });
+  // };
 
-  useEffect(() => {
-    toggleTileBoundaries(showTileBoundaries);
-  }, [showTileBoundaries]);
+  // useEffect(() => {
+  //   if (isMapReady && mapRef) {
+  //     // toggle tile boundaries
+  //     toggleTileBoundaries(showTileBoundaries);
+  //   }
+  // }, [isMapReady]);
+
+  // useEffect(() => {
+  //   toggleTileBoundaries(showTileBoundaries);
+  // }, [showTileBoundaries]);
 
   return (
     <>

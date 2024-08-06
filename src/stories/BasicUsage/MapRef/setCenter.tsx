@@ -6,22 +6,12 @@ const SetCenter = () => {
   const [mapCenter, setMapCenter] = useState([0, 0] as Number[]);
   const { mapRef, isMapReady } = useAzureMaps();
 
-  const applyMapCenter = (mapCenter: Number[]) => {
-    if (mapRef)
+  // Set the map center when the map is ready or when the map center changes.
+  useEffect(() => {
+    if (isMapReady && mapRef)
       // set map center
       mapRef.setCamera({ center: mapCenter });
-  };
-
-  useEffect(() => {
-    if (isMapReady && mapRef) {
-      // set map center
-      applyMapCenter(mapCenter);
-    }
-  }, [isMapReady]);
-
-  useEffect(() => {
-    applyMapCenter(mapCenter);
-  }, [mapCenter]);
+  }, [isMapReady, mapCenter]);
 
   return (
     <>

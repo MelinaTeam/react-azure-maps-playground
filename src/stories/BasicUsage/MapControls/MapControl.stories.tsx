@@ -6,7 +6,6 @@ const meta: Meta<typeof MapControl> = {
   title: 'Basic Usage/Map Controls',
   render: ({ ...args }) => <MapControl {...args} />,
   component: MapControl,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
