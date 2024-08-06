@@ -5,17 +5,16 @@
 /.yalc
 /.pnp
 .pnp.js
-yalc.lock
 
 # testing
 /coverage
-/src/key.ts
 
 # production
 /build
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
