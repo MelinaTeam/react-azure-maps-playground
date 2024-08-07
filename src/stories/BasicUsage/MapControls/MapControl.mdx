@@ -1,0 +1,142 @@
+import { Source, Meta } from '@storybook/addon-docs/blocks';
+
+import MapControl, { controls } from './MapControl';
+
+<Meta title="Basic Usage/MapControl" />
+
+# MapControl
+These examples show all the map navigation controls on the map and how to customize different option settings.
+
+## Style control
+
+<MapControl controls={[controls[0]]}/>
+<Source code={`
+import {
+  ControlOptions,
+  AzureMapsProvider,
+  AzureMap,
+} from 'react-azure-maps';
+
+<AzureMapsProvider>
+  <div className="defaultMap">
+    <AzureMap
+      options={your_options}
+      controls={[
+        {
+          controlName: 'StyleControl',
+          controlOptions: { mapStyles: 'all' },
+          options: { position: 'top-right' } as ControlOptions,
+        },
+      ]}
+    />
+  </div>
+</AzureMapsProvider>;
+`}/>
+
+## Zoom control
+
+<MapControl controls={[controls[1]]}/>
+<Source code={`
+import {
+  ControlOptions,
+  AzureMapsProvider,
+  AzureMap,
+} from 'react-azure-maps';
+
+<AzureMapsProvider>
+  <div className="defaultMap">
+    <AzureMap
+      options={your_options}
+      controls={[
+        {
+            controlName: 'ZoomControl',
+            options: { position: 'top-right' } as ControlOptions,
+        },
+      ]}
+    />
+  </div>
+</AzureMapsProvider>;
+`}/>
+
+## Compass control
+
+<MapControl controls={[controls[2]]}/>
+<Source code={`
+import {
+  ControlOptions,
+  AzureMapsProvider,
+  AzureMap,
+} from 'react-azure-maps';
+
+<AzureMapsProvider>
+  <div className="defaultMap">
+    <AzureMap
+      options={your_options}
+      controls={[
+        {
+            controlName: 'CompassControl',
+            controlOptions: { rotationDegreesDelta: 10, style: 'dark' },
+            options: { position: 'top-left' } as ControlOptions,
+        },
+      ]}
+    />
+  </div>
+</AzureMapsProvider>;
+`}/>
+
+## Pitch control
+
+<MapControl controls={[controls[3]]}/>
+<Source code={`
+import {
+  ControlOptions,
+  AzureMapsProvider,
+  AzureMap,
+} from 'react-azure-maps';
+
+<AzureMapsProvider>
+  <div className="defaultMap">
+    <AzureMap
+      options={your_options}
+      controls={[
+        {
+            controlName: 'PitchControl',
+            controlOptions: { pitchDegreesDelta: 10 },
+            options: { position: 'bottom-right' } as ControlOptions,
+        },
+      ]}
+    />
+  </div>
+</AzureMapsProvider>;
+`}/>
+
+## Traffic control and Legend control
+
+<MapControl controls={[controls[4], controls[5]]}/>
+<Source code={`
+import {
+  ControlOptions,
+  AzureMapsProvider,
+  AzureMap,
+} from 'react-azure-maps';
+
+<AzureMapsProvider>
+  <div className="defaultMap">
+    <AzureMap
+      options={your_options}
+      controls={[
+        {
+            controlName: 'TrafficControl',
+            controlOptions: { incidents: true },
+            options: { position: 'top-right' } as ControlOptions,
+        },
+        {
+            controlName: 'TrafficLegendControl',
+            controlOptions: {},
+            options: { position: 'bottom-left' } as ControlOptions,
+        },
+      ]}
+    />
+  </div>
+</AzureMapsProvider>;
+`}/>

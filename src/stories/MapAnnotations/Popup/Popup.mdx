@@ -9,14 +9,13 @@ import Popup from './Popup';
 # Popup
 Popup is an information window anchored at a specified position on a map.
 With **react-azure-maps**, you can quickly customize the `Popup` component with these 3 props:
-<Popup/>
+<Popup isVisible options={{ position: [0, 0] }} />
 {/* show basic code */}
 
 <Source code={`
-
-`} />
-
-You can also pass a **custom React component** to the marker: <br/>
-<Source code={`
-<AzureMapHtmlMarker options={{ position }} markerContent={<YourComponent/>} />
+<AzureMapPopup
+    isVisible
+    options={{ position: [0, 0] }}
+    popupContent={<div style={{ padding: '20px' }}>Hello World</div>}
+    />
 `} />

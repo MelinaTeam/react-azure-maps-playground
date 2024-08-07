@@ -1,9 +1,7 @@
 // BubbleLayer/code.ts
 export const code = `
-import { mapOptions } from 'your_azure_maps_settings_file';
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
-import { BubbleLayerOptions } from 'azure-maps-control';
-import atlas from 'azure-maps-control';
+import atlas, { BubbleLayerOptions } from 'azure-maps-control';
 
 // Generate random points to build the data source for the BubbleLayer.
 const collection = generateRandomPoints(); 
@@ -11,7 +9,7 @@ const collection = generateRandomPoints();
 const BubbleLayer = () => {
   <AzureMapsProvider>
   <div className="defaultMap">
-  <AzureMap options={mapOptions}>
+  <AzureMap options={your_options}>
 
     <AzureMapDataSourceProvider 
       id="BubbleLayer DataSourceProvider" 

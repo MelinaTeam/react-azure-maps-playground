@@ -5,7 +5,7 @@ const Popup = ({ isVisible, options }: IAzureMapPopup) => {
   // use position as argument would be better
   return (
     <AzureMapsProvider>
-      <div className="defaulMap">
+      <div className="defaultMap">
         <AzureMap options={mapOptions}>
           <AzureMapPopup
             isVisible={isVisible}
