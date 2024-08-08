@@ -17,23 +17,6 @@ const SetStyle = () => {
       mapRef.setStyle({ showTileBoundaries });
   }, [isMapReady, showTileBoundaries]);
 
-  // const toggleTileBoundaries = (showTileBoundaries: boolean) => {
-  //   if (mapRef)
-  //     // toggle tile boundaries
-  //     mapRef.setStyle({ showTileBoundaries });
-  // };
-
-  // useEffect(() => {
-  //   if (isMapReady && mapRef) {
-  //     // toggle tile boundaries
-  //     toggleTileBoundaries(showTileBoundaries);
-  //   }
-  // }, [isMapReady]);
-
-  // useEffect(() => {
-  //   toggleTileBoundaries(showTileBoundaries);
-  // }, [showTileBoundaries]);
-
   return (
     <>
       <button
