@@ -1,7 +1,6 @@
 import { IAzureMapOptions, AuthenticationType } from 'react-azure-maps';
-// require('dotenv').config();
 
-export const key = process.env.REACT_APP_AZURE_MAPS_KEY || '';
+export const key = process.env.STORYBOOK_AZURE_MAPS_KEY || '';
 
 export const mapOptions: IAzureMapOptions = {
   authOptions: {
