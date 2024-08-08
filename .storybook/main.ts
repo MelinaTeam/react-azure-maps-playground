@@ -6,24 +6,18 @@ const config: StorybookConfig = {
     '@storybook/preset-create-react-app',
     '@storybook/addon-onboarding',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
-    '@storybook/addon-interactions',
-    // '@storybook/addon-storysource',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        actions: false,
+        interactions: false,
+      },
+    },
     {
       name: '@storybook/addon-storysource',
       options: {
         loaderOptions: {
-          // injectStoryParameters: false,
           parser: 'typescript',
-        },
-      },
-    },
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          // injectStoryParameters: false,
         },
       },
     },
