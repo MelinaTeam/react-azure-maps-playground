@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Storybook
         env:
-          REACT_APP_AZURE_MAPS_KEY: ${{ secrets.REACT_APP_AZURE_MAPS_KEY }}
+          STORYBOOK_AZURE_MAPS_KEY: ${{ secrets.STORYBOOK_AZURE_MAPS_KEY }}
         run: npm run build-storybook
 
       - name: Deploy to GitHub Pages
