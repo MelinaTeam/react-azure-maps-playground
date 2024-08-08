@@ -37,5 +37,6 @@ export const Example: Story = {
     showLabels: true,
     showLogo: true,
     renderWorldCopies: true,
+    showFeedbackLink: true,
   },
 };

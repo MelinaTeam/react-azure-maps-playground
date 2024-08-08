@@ -5,18 +5,20 @@ export interface MapStylesProps {
   showLogo?: boolean;
   showLabels?: boolean;
   renderWorldCopies?: boolean;
+  showFeedbackLink?: boolean;
 }
 
-const MapStyles = ({ showLabels, showLogo, renderWorldCopies }: MapStylesProps) => {
+const MapStyles = ({ showLabels, showLogo, renderWorldCopies, showFeedbackLink }: MapStylesProps) => {
   return (
     <div className="defaultMap">
       <AzureMapsProvider>
         <AzureMap
           options={mapOptions}
           styleOptions={{
-            showLabels: showLabels,
-            showLogo: showLogo,
-            renderWorldCopies: renderWorldCopies,
+            showLabels,
+            showLogo,
+            renderWorldCopies,
+            showFeedbackLink,
           }}
         ></AzureMap>
       </AzureMapsProvider>
