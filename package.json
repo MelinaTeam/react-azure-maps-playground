@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "azure-maps-control": "^3.0.1",
+    "azure-maps-control": "^3.3.0",
     "react": "^18.2.0",
     "react-azure-maps": "^1.0.0",
     "react-dom": "^18.2.0",

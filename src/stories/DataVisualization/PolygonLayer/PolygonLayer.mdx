@@ -1,0 +1,13 @@
+import PolygonLayer from './PolygonLayer';
+import { Source, Meta } from '@storybook/addon-docs/blocks';
+import * as PolygonLayerStories from './PolygonLayer.stories';
+
+<Meta of={PolygonLayerStories}/>
+
+# PolygonLayer
+
+To create a polygon, add it to a data source, and render it with a polygon layer using the PolygonLayer class.
+
+<PolygonLayer fillOpacity={0.5} fillColor={'black'}/>
+<Source code={`<AzureMapLayerProvider type="PolygonLayer" options={{ fillColor: 'black', fillOpacity: 0.5 }} />;
+`}/>

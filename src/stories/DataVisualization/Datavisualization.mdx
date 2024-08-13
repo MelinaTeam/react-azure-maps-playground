@@ -18,18 +18,22 @@ Therefore, the basic structure of a data visualization component is as follows:
 <Source code= {`
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
 
-<AzureMapsProvider>
-    <AzureMap options={your_options}>
-        <AzureMapDataSourceProvider 
-            id="your_layer_id" 
-            collection={your_data}>
-            <AzureMapLayerProvider
-                type="layer_type"
-                options={your_layer_options}
-            />
-        </AzureMapDataSourceProvider>
-    </AzureMap>
-</AzureMapsProvider>
+const Your_Component = () => {
+    return (
+        <AzureMapsProvider>
+            <AzureMap options={your_options}>
+                <AzureMapDataSourceProvider 
+                    id="your_layer_id" 
+                    collection={your_data}>
+                    <AzureMapLayerProvider
+                        type="layer_type"
+                        options={your_layer_options}
+                    />
+                </AzureMapDataSourceProvider>
+            </AzureMap>
+        </AzureMapsProvider>
+    )
+}
 `} />
 ## Create a data source
 To create a data source, you can pass the data to the `collection` prop in various ways: <br/>

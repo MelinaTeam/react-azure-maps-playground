@@ -34,18 +34,4 @@ const LineLayer = ({ strokeColor, strokeWidth, strokeOpacity, blur, lineCap, tra
   );
 };
 
-function generateRandomPoints() {
-  var layerData = [];
-
-  for (var i = 0; i < 50; i++) {
-    layerData.push(
-      new atlas.data.Feature(new atlas.data.Point([Math.random() * 360 - 180, Math.random() * 170 - 85]), {
-        title: 'Pin_' + i,
-      }),
-    );
-  }
-
-  return layerData;
-}
-
 export default LineLayer;
