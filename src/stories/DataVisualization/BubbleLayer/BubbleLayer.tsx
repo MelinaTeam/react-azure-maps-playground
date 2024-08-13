@@ -2,7 +2,6 @@ import { mapOptions } from '../../../key';
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
 import { BubbleLayerOptions } from 'azure-maps-control';
 import atlas from 'azure-maps-control';
-import Test from './Test';
 
 const collection = generateRandomPoints();
 

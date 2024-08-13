@@ -1,0 +1,109 @@
+import { Source, Meta } from '@storybook/addon-docs/blocks';
+
+import ClusterAggregates from './ClusterAggregates';
+
+<Meta title="Data Visualization/Cluster Aggregates"/>
+
+# Cluster Aggregates
+This example shows how to enable point based clustering on a data source and render them differently from individual points on the map.
+Clustered points have four properties;
+- `cluster` - A boolean value indicating that it is a cluster.
+- `cluster_id` - A unique id for the cluster which can be used with the DataSource getClusterExpansionZoom, getClusterChildren, and getClusterLeaves functions.
+- `point_count` - The number of points the cluster contains.
+- `point_count_abbreviated` - A string that abbreviates the point_count value if it is long. (i.e. 4,000 becomes 4K)
+
+You can observe the clusters by zooming in and out on the map.
+
+<ClusterAggregates showBubbles showNumbers/>
+
+In this example, we use a **Bubble Layer** to render the clusters as circles and a **Symbol Layer** to render the number of points in each cluster.
+For the bubble layer, we set the radius and the color to change based on the number of points in the cluster.
+
+<Source code={`
+const bubbleLayerOptions = {
+  //Scale the size of the clustered bubble based on the number of points inthe cluster.
+  radius: [
+    'step',
+    ['get', 'point_count'],
+    20, //Default of 20 pixel radius.
+    100,
+    30, //If point_count >= 100, radius is 30 pixels.
+    750,
+    40, //If point_count >= 750, radius is 40 pixels.
+  ],
+
+  //Change the color of the cluster based on the value on the point_cluster property of the cluster.
+  color: [
+    'step',
+    ['get', 'point_count'],
+    'rgba(0,255,0,0.8)', //Default to green.
+    100,
+    'rgba(255,255,0,0.8)', //If the point_count >= 100, color is yellow.
+    750,
+    'rgba(255,0,0,0.8)', //If the point_count >= 100, color is red.
+  ],
+  strokeWidth: 0,
+  filter: ['has', 'point_count'], //Only rendered data points which have a point_count property, which clusters do.
+};
+`}/>
+
+For the symbol layer, we set the text to be the point_count_abbreviated property of the cluster.
+
+<Source code={`
+const symbolLayerOptions = {
+  iconOptions: {
+    image: 'none', //Hide the icon image.
+  },
+  textOptions: {
+    textField: ['get', 'point_count_abbreviated'],
+    offset: [0, 0.4],
+  },
+};
+`}/>
+
+Finally, we set the options of the **AzureMapDataSourceProvider** to enable clustering.
+
+<Source code={`
+import {
+  AzureMap,
+  AzureMapDataSourceProvider,
+  AzureMapLayerProvider,
+  AzureMapsProvider,
+} from 'react-azure-maps';
+
+const ClusterAggregates = ({ showBubbles, showNumbers }: ClusterAggregatesProps) => {
+  
+  return (
+      <AzureMapsProvider>
+        <div className="defaultMap">
+          <AzureMap options={your_option}>
+            <AzureMapDataSourceProvider
+              id="ClusterAggregates DataSourceProvider"
+              dataFromUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+              options={{
+                //Tell the data source to cluster point data.
+                cluster: true,
+                //The radius in pixels to cluster points together.
+                clusterRadius: 45,
+                //The maximium zoom level in which clustering occurs.
+                //If you zoom in more than this, all points are rendered as symbols.
+                clusterMaxZoom: 15,
+              }}
+            >
+                <AzureMapLayerProvider
+                    id={'BubbleLayer LayerProvider'}
+                    options={bubbleLayerOptions}
+                    type="BubbleLayer"
+                ></AzureMapLayerProvider>
+                <AzureMapLayerProvider
+                    id={'NumberLayer2 LayerProvider'}
+                    options={symbolLayerOptions}
+                    type="SymbolLayer"
+                ></AzureMapLayerProvider>
+            </AzureMapDataSourceProvider>
+          </AzureMap>
+        </div>
+      </AzureMapsProvider>
+  );
+};
+`} />
