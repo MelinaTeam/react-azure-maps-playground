@@ -1,0 +1,121 @@
+import { Meta, Source } from '@storybook/blocks';
+import { AzureMapsProvider } from 'react-azure-maps';
+import SetStyle from './SetStyle';
+import SetCenter from './SetCenter';
+
+<Meta title="Basic Usage/Map Reference"/>
+
+# Map Reference
+After the map object has been rendered, you can still make adjustments to the map using the `mapRef`.
+When accessing the map object, check `isMapReady` to make sure the map is fully loaded: <br/>
+
+<Source code={`
+import { AzureMap, useAzureMaps } from 'react-azure-maps';
+import { useEffect } from 'react';
+
+const YourComponent = () => {
+    const { mapRef, isMapReady } = useAzureMaps();
+
+    useEffect(() => {
+        if (isMapReady && mapRef)
+            // do something with mapRef
+    }, [isMapReady]);
+
+    return (
+        <AzureMap options={your_options}></AzureMap>
+    );
+}
+`}/>
+
+Remember to wrap your component with AzureMapsProvider to provide the necessary context:
+
+<Source code={`
+import { AzureMapsProvider } from 'react-azure-maps';
+import YourComponent from './YourComponent';
+
+<AzureMapsProvider>
+    <YourComponent/>
+</AzureMapsProvider>
+`}/>
+
+## Examples
+In the first example, we use the `setCamera()` function to change the center of the map. <br/>
+Click the button to see the effect.
+
+<AzureMapsProvider>
+    <SetCenter/>
+</AzureMapsProvider>
+
+<Source code={`
+import { useEffect, useState } from 'react';
+import { AzureMap, useAzureMaps } from 'react-azure-maps';
+
+const SetCenter = () => {
+  const [mapCenter, setMapCenter] = useState([0, 0] as Number[]);
+  const { mapRef, isMapReady } = useAzureMaps();
+
+  // Set the map center when the map is ready or when the map center changes.
+  useEffect(() => {
+    if (isMapReady && mapRef)
+      // set map center
+      mapRef.setCamera({ center: mapCenter });
+  }, [isMapReady, mapCenter]);
+
+  return (
+    <>
+      <button 
+        style={{ color: 'dodgerblue', marginBottom: '10px' }} 
+        onClick={() => setMapCenter(getRandomPosition())}>
+        Change Map Center
+      </button>
+      <div className="defaultMap">
+        <AzureMap options={mapOptions} />
+      </div>
+    </>
+  );
+};
+
+const getRandomPosition = () => {
+  const randomLongitude = Math.floor(Math.random() * (180 - -180) + -180);
+  const randomLatitude = Math.floor(Math.random() * (-90 - 90) + 90);
+  return [randomLatitude, randomLongitude];
+};
+`}/>
+
+In the second example, we use the `setStyle()` function to change the map's display style. 
+Click the button to decide whether to show tile boundaries.
+
+<AzureMapsProvider>
+    <SetStyle/>
+</AzureMapsProvider>
+
+<Source code={`
+import { useEffect, useState } from 'react';
+import { AzureMap, useAzureMaps } from 'react-azure-maps';
+
+const SetStyle = () => {
+  const [showTileBoundaries, setShowTileBoundaries] = useState(false);
+  const { mapRef, isMapReady } = useAzureMaps();
+
+  //Set the tile boundaries when the map is ready or when the showTileBoundaries state changes
+  useEffect(() => {
+    if (isMapReady && mapRef)
+      // toggle tile boundaries
+      mapRef.setStyle({ showTileBoundaries });
+  }, [isMapReady, showTileBoundaries]);
+
+  return (
+    <>
+      <button
+        style={{ color: 'dodgerblue', marginBottom: '10px' }}
+        onClick={() => setShowTileBoundaries(!showTileBoundaries)}
+      >
+        Toggle Tile Boundaries
+      </button>
+      <div className="defaultMap">
+        <AzureMap options={mapOptions} />
+      </div>
+    </>
+  );
+};
+`}/>

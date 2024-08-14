@@ -1,0 +1,30 @@
+import { Meta, Source } from '@storybook/blocks';
+
+import * as BubbleLayerStories from './BubbleLayer.stories';
+
+import BubbleLayer from './BubbleLayer';
+
+<Meta of={BubbleLayerStories} />
+
+# Bubble Layer
+
+Bubble layers render points as circles on the map with a fixed pixel radius.<br/>
+You can customize the appearance of the bubbles by passing the `options` prop.<br/>
+For more available properties, see the documentation [BubbleLayerOptions](https://learn.microsoft.com/en-us/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-maps-typescript-latest).
+
+<BubbleLayer/>
+
+<Source code={`
+<AzureMapLayerProvider
+    type="BubbleLayer"
+    options={{
+        radius: 10,
+        color: 'DodgerBlue',
+        opacity: 1,
+        strokeColor: 'DarkBlue',
+        strokeWidth: 2,
+        strokeOpacity: 1,
+        blur: 0,
+    }}
+/>
+`} />

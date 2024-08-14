@@ -1,0 +1,21 @@
+import { Meta, Source } from '@storybook/blocks';
+
+import * as PopupStories from './Popup.stories';
+
+import Popup from './Popup';
+
+<Meta of={PopupStories} />
+
+# Popup
+Popup is an information window anchored at a specified position on a map.
+With **react-azure-maps**, you can quickly customize the `Popup` component with these 3 props:
+<Popup isVisible options={{ position: [0, 0] }} />
+{/* show basic code */}
+
+<Source code={`
+<AzureMapPopup
+    isVisible
+    options={{ position: [0, 0] }}
+    popupContent={<div style={{ padding: '20px' }}>Hello World</div>}
+    />
+`} />
