@@ -1,0 +1,13 @@
+.defaultMap {
+  width: 700px;
+  height: 300px;
+}
+@media screen and (max-width: 700px) {
+  .defaultMap {
+    width: 90vw;
+    height: 200px;
+  }
+}
+
+
+/*# sourceMappingURL=main.ec3a3415.css.map*/
