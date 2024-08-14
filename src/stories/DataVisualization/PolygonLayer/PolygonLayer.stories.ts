@@ -36,8 +36,6 @@ const PolygonLayer = () => {
     </AzureMapsProvider>
   );
 };
-
-export default PolygonLayer;
 `,
     },
   },
