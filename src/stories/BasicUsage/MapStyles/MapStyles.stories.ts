@@ -1,16 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import MapStyles from './MapStyles';
-import { source } from 'azure-maps-control';
 
 const meta: Meta<typeof MapStyles> = {
   title: 'Basic Usage/Map Styles',
   component: MapStyles,
   parameters: {
     layout: 'centered',
-    source: `
+    storySource: {
+      source: `
 import { AzureMap, AzureMapsProvider } from 'react-azure-maps';
 
 const MapStyles = () => {
+
   return (
     <AzureMapsProvider>
     <div className="defaultMap">
@@ -27,6 +28,7 @@ const MapStyles = () => {
   );
 };
 `,
+    },
   },
 };
 export default meta;
