@@ -5,6 +5,10 @@ on:
     branches:
       - storybook
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
