@@ -30,7 +30,4 @@ export default meta;
 
 type Story = StoryObj<typeof LineLayer>;
 
-export const Example: Story = {
-  name: 'Example',
-  args: {},
-};
+export const Example: Story = {};

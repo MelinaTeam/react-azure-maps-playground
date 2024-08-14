@@ -1,7 +1,5 @@
 import { Canvas, Meta, Source } from '@storybook/blocks';
 
-import { code } from './code';
-
 import * as BubbleLayerStories from './BubbleLayer.stories';
 
 import BubbleLayer from './BubbleLayer';
@@ -19,8 +17,6 @@ For more available properties, see the documentation [BubbleLayerOptions](https:
 {/* <Canvas of={BubbleLayerStories.Example} sourceState="none" /> */}
 
 <Source code={`
-import { AzureMapLayerProvider } from 'react-azure-maps';
-
 <AzureMapLayerProvider
     type="BubbleLayer"
     options={{

@@ -2,3 +2,7 @@
   width: 700px;
   height: 300px;
 }
+
+.atlas-map .azure-map-copyright a {
+  font-size: 9px;
+}
