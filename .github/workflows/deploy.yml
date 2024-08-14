@@ -6,7 +6,7 @@ on:
       - storybook
 
 permissions:
-  contents: read
+  contents: write
   pages: write
 
 jobs:
