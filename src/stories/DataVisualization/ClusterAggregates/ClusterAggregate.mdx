@@ -90,16 +90,16 @@ const ClusterAggregates = ({ showBubbles, showNumbers }: ClusterAggregatesProps)
                 clusterMaxZoom: 15,
               }}
             >
-                <AzureMapLayerProvider
-                    id={'BubbleLayer LayerProvider'}
-                    options={bubbleLayerOptions}
-                    type="BubbleLayer"
-                ></AzureMapLayerProvider>
-                <AzureMapLayerProvider
-                    id={'NumberLayer2 LayerProvider'}
-                    options={symbolLayerOptions}
-                    type="SymbolLayer"
-                ></AzureMapLayerProvider>
+              <AzureMapLayerProvider
+                  id={'BubbleLayer LayerProvider'}
+                  options={bubbleLayerOptions}
+                  type="BubbleLayer"
+              ></AzureMapLayerProvider>
+              <AzureMapLayerProvider
+                  id={'NumberLayer2 LayerProvider'}
+                  options={symbolLayerOptions}
+                  type="SymbolLayer"
+              ></AzureMapLayerProvider>
             </AzureMapDataSourceProvider>
           </AzureMap>
         </div>

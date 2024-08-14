@@ -78,7 +78,4 @@ export default meta;
 
 type Story = StoryObj<typeof BubbleLayer>;
 
-export const Example: Story = {
-  name: 'Example',
-  args: {},
-};
+export const Example: Story = {};
