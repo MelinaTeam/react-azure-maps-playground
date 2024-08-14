@@ -16,7 +16,7 @@ const collection = new atlas.data.Polygon([
 const PolygonLayer = ({ fillColor, fillOpacity }: PolygonLayerOptions) => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={{ ...mapOptions, center: [12, 39], zoom: 0 }}>
           <AzureMapDataSourceProvider id="PolygonLayer DataSourceProvider" collection={collection}>
             <AzureMapLayerProvider type="PolygonLayer" options={{ fillColor, fillOpacity }} />

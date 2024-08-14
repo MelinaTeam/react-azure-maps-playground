@@ -78,7 +78,7 @@ const symbolLayer = (
 const ClusterAggregates = ({ showBubbles, showNumbers }: ClusterAggregatesProps) => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={option}>
           <AzureMapDataSourceProvider
             id="ClusterAggregates DataSourceProvider"
