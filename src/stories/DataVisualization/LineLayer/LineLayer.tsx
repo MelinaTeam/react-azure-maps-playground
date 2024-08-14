@@ -13,7 +13,7 @@ const collection = new atlas.data.LineString([
 const LineLayer = ({ strokeColor, strokeWidth, strokeOpacity, blur, lineCap, translate }: LineLayerOptions) => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={{ ...mapOptions, center: [-105.20507, 39.77476], zoom: 1.4 }}>
           <AzureMapDataSourceProvider id="LineLayer DataSourceProvider" collection={collection}>
             <AzureMapLayerProvider

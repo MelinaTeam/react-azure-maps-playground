@@ -18,7 +18,7 @@ const SetCenter = () => {
       <button style={{ color: 'dodgerblue', marginBottom: '10px' }} onClick={() => setMapCenter(getRandomPosition())}>
         Change Map Center
       </button>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={mapOptions} />
       </div>
     </>

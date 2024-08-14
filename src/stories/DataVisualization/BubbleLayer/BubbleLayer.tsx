@@ -8,7 +8,7 @@ const collection = generateRandomPoints();
 const BubbleLayer = ({ radius, color, opacity, strokeColor, strokeWidth, strokeOpacity, blur }: BubbleLayerOptions) => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={mapOptions}>
           <AzureMapDataSourceProvider id="BubbleLayer DataSourceProvider" collection={collection}>
             <AzureMapLayerProvider

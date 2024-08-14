@@ -10,7 +10,7 @@ export interface MapStylesProps {
 
 const MapStyles = ({ showLabels, showLogo, renderWorldCopies, showFeedbackLink }: MapStylesProps) => {
   return (
-    <div className="defaultMap">
+    <div className="defaultMap sb-unstyled">
       <AzureMapsProvider>
         <AzureMap
           options={mapOptions}

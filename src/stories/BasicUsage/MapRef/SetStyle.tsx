@@ -25,7 +25,7 @@ const SetStyle = () => {
       >
         Toggle Tile Boundaries
       </button>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={mapOptions} />
       </div>
     </>

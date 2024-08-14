@@ -2,7 +2,9 @@
   width: 700px;
   height: 300px;
 }
-
-.atlas-map .azure-map-copyright a {
-  font-size: 9px;
+@media screen and (max-width: 700px) {
+  .defaultMap {
+    width: 90vw;
+    height: 200px;
+  }
 }

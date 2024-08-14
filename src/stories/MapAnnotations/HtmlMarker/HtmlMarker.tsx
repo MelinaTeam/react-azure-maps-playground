@@ -5,7 +5,7 @@ import { mapOptions } from '../../../key';
 const HtmlMarker = ({ color, text, position }: HtmlMarkerOptions) => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={mapOptions}>
           <AzureMapHtmlMarker
             //   key={rendId}

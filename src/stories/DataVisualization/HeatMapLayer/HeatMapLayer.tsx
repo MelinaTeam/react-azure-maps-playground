@@ -22,7 +22,7 @@ const magWeight = [
 const HeatMapLayer = ({ radius, opacity, intensity, weight, color }: HeatMapLayerProps) => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={mapOptions}>
           <AzureMapDataSourceProvider
             id="LineLayer DataSourceProvider"

@@ -32,7 +32,7 @@ const SymbolLayer = ({
 }: SymbolLayerProps) => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
+      <div className="defaultMap sb-unstyled">
         <AzureMap options={mapOptions}>
           <AzureMapDataSourceProvider id="SymbolLayer DataSourceProvider" collection={collection}>
             <AzureMapLayerProvider
