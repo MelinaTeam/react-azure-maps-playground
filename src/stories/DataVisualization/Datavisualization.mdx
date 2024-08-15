@@ -1,17 +1,12 @@
 import { Meta, Source } from '@storybook/blocks';
-import BubbleLayer from './BubbleLayer/BubbleLayer';
-import * as BubbleLayerStories from './BubbleLayer/BubbleLayer.stories';
+import ClusterAggregates from './ClusterAggregates/ClusterAggregates'
 
 <Meta title="Data Visualization/Introduction"/>
-
 
 # Data Visualization
 **react-azure-maps** provides a set of components to help you visualize data on a map like this: <br/>
 
-{/* <BubbleLayer/> */}
-
-<Canvas of={BubbleLayerStories.Example} sourceState="none" />
-
+<ClusterAggregates showBubbles showNumbers/>
 
 We will need 2 kinds of components to visualize data on a map:
 1. `<AzureMapDataSourceProvider>` : to provide your data to the map.
