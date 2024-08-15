@@ -5,7 +5,6 @@ const meta: Meta<typeof LineLayer> = {
   title: 'Data Visualization/Line Layer',
   component: LineLayer,
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';

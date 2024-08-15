@@ -5,7 +5,6 @@ const meta: Meta<typeof MapStyles> = {
   title: 'Basic Usage/Map Styles',
   component: MapStyles,
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `
 import { AzureMap, AzureMapsProvider } from 'react-azure-maps';

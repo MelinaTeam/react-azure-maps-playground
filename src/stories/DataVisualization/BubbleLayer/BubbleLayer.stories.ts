@@ -5,7 +5,6 @@ const meta: Meta<typeof BubbleLayer> = {
   title: 'Data Visualization/Bubble Layer',
   component: BubbleLayer,
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
 import atlas, { BubbleLayerOptions } from 'azure-maps-control';

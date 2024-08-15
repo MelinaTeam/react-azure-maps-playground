@@ -11,7 +11,6 @@ const meta: Meta<typeof Popup> = {
     },
   },
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `
 import { AzureMap, AzureMapsProvider, AzureMapPopup, IAzureMapPopup } from 'react-azure-maps';

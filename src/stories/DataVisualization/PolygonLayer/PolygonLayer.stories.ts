@@ -5,7 +5,6 @@ const meta: Meta<typeof PolygonLayer> = {
   title: 'Data Visualization/Polygon Layer',
   component: PolygonLayer,
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';

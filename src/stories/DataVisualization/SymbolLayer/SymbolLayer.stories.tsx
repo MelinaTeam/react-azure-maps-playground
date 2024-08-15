@@ -4,9 +4,7 @@ import SymbolLayer from './SymbolLayer';
 const meta: Meta<typeof SymbolLayer> = {
   title: 'Data Visualization/Symbol Layer',
   component: SymbolLayer,
-  parameters: {
-    layout: 'centered',
-  },
+  parameters: {},
   args: {
     image: 'pin-round-blue',
     optionsSize: 1.3,

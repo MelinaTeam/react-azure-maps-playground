@@ -5,7 +5,6 @@ const meta: Meta<typeof HeatMapLayer> = {
   title: 'Data Visualization/Heat Map Layer',
   component: HeatMapLayer,
   parameters: {
-    layout: 'centered',
     controls: { exclude: ['color'] },
   },
   args: {

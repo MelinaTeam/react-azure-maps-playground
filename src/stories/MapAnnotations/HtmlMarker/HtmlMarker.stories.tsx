@@ -10,7 +10,6 @@ const meta: Meta<typeof HtmlMarker> = {
     position: [0, 0],
   },
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `
 import { AzureMap, AzureMapHtmlMarker, AzureMapsProvider } from 'react-azure-maps';
