@@ -68,8 +68,8 @@ const SetCenter = () => {
         onClick={() => setMapCenter(getRandomPosition())}>
         Change Map Center
       </button>
-      <div className="defaultMap">
-        <AzureMap options={mapOptions} />
+      <div style={{ width: '700px', height:'300px' }}>
+        <AzureMap options={ your_options } />
       </div>
     </>
   );
@@ -112,8 +112,8 @@ const SetStyle = () => {
       >
         Toggle Tile Boundaries
       </button>
-      <div className="defaultMap">
-        <AzureMap options={mapOptions} />
+      <div style={{ width: '700px', height:'300px' }}>
+        <AzureMap options={ your_options } />
       </div>
     </>
   );

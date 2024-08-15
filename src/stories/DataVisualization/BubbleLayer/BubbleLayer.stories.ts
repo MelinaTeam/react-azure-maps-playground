@@ -14,28 +14,22 @@ const collection = generateRandomPoints();
 
 const BubbleLayer = () => {
   <AzureMapsProvider>
-  <div className="defaultMap">
-  <AzureMap options={your_options}>
-
-    <AzureMapDataSourceProvider 
-      id="BubbleLayer DataSourceProvider" 
-      collection={collection}>
-      <AzureMapLayerProvider
-        type="BubbleLayer"
-        options={{
-          radius: 10,
-          color: 'DodgerBlue',
-          opacity: 1,
-          strokeColor: 'DarkBlue',
-          strokeWidth: 2,
-          strokeOpacity: 1,
-          blur: 0,
-        }}
-      />
-    </AzureMapDataSourceProvider>
-
-  </AzureMap>
-  </div>
+    <AzureMap options={your_options}>
+      <AzureMapDataSourceProvider id="BubbleLayer DataSourceProvider" collection={collection}>
+        <AzureMapLayerProvider
+          type="BubbleLayer"
+          options={{
+            radius: 10,
+            color: 'DodgerBlue',
+            opacity: 1,
+            strokeColor: 'DarkBlue',
+            strokeWidth: 2,
+            strokeOpacity: 1,
+            blur: 0,
+          }}
+        />
+      </AzureMapDataSourceProvider>
+    </AzureMap>
   </AzureMapsProvider>
   );
 };

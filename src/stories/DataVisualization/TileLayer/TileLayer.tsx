@@ -1,4 +1,4 @@
-import { mapOptions } from '../../key';
+import { mapOptions } from '../../../key';
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
 import { TileLayerOptions } from 'azure-maps-control';
 

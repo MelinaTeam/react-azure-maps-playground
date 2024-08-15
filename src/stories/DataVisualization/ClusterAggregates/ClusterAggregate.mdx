@@ -75,34 +75,32 @@ const ClusterAggregates = ({ showBubbles, showNumbers }: ClusterAggregatesProps)
   
   return (
       <AzureMapsProvider>
-        <div className="defaultMap">
-          <AzureMap options={your_option}>
-            <AzureMapDataSourceProvider
-              id="ClusterAggregates DataSourceProvider"
-              dataFromUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
-              options={{
-                //Tell the data source to cluster point data.
-                cluster: true,
-                //The radius in pixels to cluster points together.
-                clusterRadius: 45,
-                //The maximium zoom level in which clustering occurs.
-                //If you zoom in more than this, all points are rendered as symbols.
-                clusterMaxZoom: 15,
-              }}
-            >
-              <AzureMapLayerProvider
-                  id={'BubbleLayer LayerProvider'}
-                  options={bubbleLayerOptions}
-                  type="BubbleLayer"
-              ></AzureMapLayerProvider>
-              <AzureMapLayerProvider
-                  id={'NumberLayer2 LayerProvider'}
-                  options={symbolLayerOptions}
-                  type="SymbolLayer"
-              ></AzureMapLayerProvider>
-            </AzureMapDataSourceProvider>
-          </AzureMap>
-        </div>
+        <AzureMap options={your_option}>
+          <AzureMapDataSourceProvider
+            id="ClusterAggregates DataSourceProvider"
+            dataFromUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+            options={{
+              //Tell the data source to cluster point data.
+              cluster: true,
+              //The radius in pixels to cluster points together.
+              clusterRadius: 45,
+              //The maximium zoom level in which clustering occurs.
+              //If you zoom in more than this, all points are rendered as symbols.
+              clusterMaxZoom: 15,
+            }}
+          >
+            <AzureMapLayerProvider
+                id={'BubbleLayer LayerProvider'}
+                options={bubbleLayerOptions}
+                type="BubbleLayer"
+            ></AzureMapLayerProvider>
+            <AzureMapLayerProvider
+                id={'NumberLayer2 LayerProvider'}
+                options={symbolLayerOptions}
+                type="SymbolLayer"
+            ></AzureMapLayerProvider>
+          </AzureMapDataSourceProvider>
+        </AzureMap>
       </AzureMapsProvider>
   );
 };

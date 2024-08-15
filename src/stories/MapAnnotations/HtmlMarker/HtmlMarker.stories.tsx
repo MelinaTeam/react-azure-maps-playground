@@ -18,17 +18,15 @@ import { HtmlMarkerOptions, SymbolLayerOptions } from 'azure-maps-control';
 const HtmlMarker = () => {
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
-        <AzureMap options={your_options}>
-          <AzureMapHtmlMarker
-            options={{
-                color: 'DodgerBlue',
-                text: '10',
-                position: [0, 0],
-            }}
-          />
-        </AzureMap>
-      </div>
+      <AzureMap options={your_options}>
+        <AzureMapHtmlMarker
+          options={{
+              color: 'DodgerBlue',
+              text: '10',
+              position: [0, 0],
+          }}
+        />
+      </AzureMap>
     </AzureMapsProvider>
   );
 };

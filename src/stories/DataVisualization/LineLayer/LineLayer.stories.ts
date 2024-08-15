@@ -21,23 +21,21 @@ const collection = new atlas.data.LineString([
 const LineLayer = () => {
   return (
     <AzureMapsProvider>
-    <div className="defaultMap">
-    <AzureMap options={your_options}>
-        <AzureMapDataSourceProvider id="LineLayer DataSourceProvider" collection={collection}>
-        <AzureMapLayerProvider
-            type="LineLayer"
-            options={{
-            strokeColor,
-            strokeWidth,
-            strokeOpacity,
-            blur,
-            lineCap,
-            translate,
-            }}
-        />
-        </AzureMapDataSourceProvider>
-    </AzureMap>
-    </div>
+      <AzureMap options={your_options}>
+          <AzureMapDataSourceProvider id="LineLayer DataSourceProvider" collection={collection}>
+          <AzureMapLayerProvider
+              type="LineLayer"
+              options={{
+              strokeColor,
+              strokeWidth,
+              strokeOpacity,
+              blur,
+              lineCap,
+              translate,
+              }}
+          />
+          </AzureMapDataSourceProvider>
+      </AzureMap>
     </AzureMapsProvider>
   );
 };

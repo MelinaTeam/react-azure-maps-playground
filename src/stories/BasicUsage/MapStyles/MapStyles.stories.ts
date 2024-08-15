@@ -13,7 +13,6 @@ const MapStyles = () => {
 
   return (
     <AzureMapsProvider>
-    <div className="defaultMap">
       <AzureMap
         options={your_options}
         styleOptions={{
@@ -22,7 +21,6 @@ const MapStyles = () => {
           renderWorldCopies={true},
         }}
       ></AzureMap>
-    </div>
     </AzureMapsProvider>
   );
 };

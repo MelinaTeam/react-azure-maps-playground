@@ -24,14 +24,12 @@ const PolygonLayer = () => {
 
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
-        <AzureMap options={{ ...your_options, center: [12, 39], zoom: 0 }}>
-          <AzureMapDataSourceProvider id="PolygonLayer DataSourceProvider" collection={collection}>
-            <AzureMapLayerProvider type="PolygonLayer"  
-                                   options={{ fillColor: 'rgba(0, 0, 255, 0.5)', fillOpacity: 0.8, }} />
-          </AzureMapDataSourceProvider>
-        </AzureMap>
-      </div>
+      <AzureMap options={{ ...your_options, center: [12, 39], zoom: 0 }}>
+        <AzureMapDataSourceProvider id="PolygonLayer DataSourceProvider" collection={collection}>
+          <AzureMapLayerProvider type="PolygonLayer"  
+                                 options={{ fillColor: 'rgba(0, 0, 255, 0.5)', fillOpacity: 0.8, }} />
+        </AzureMapDataSourceProvider>
+      </AzureMap>
     </AzureMapsProvider>
   );
 };
