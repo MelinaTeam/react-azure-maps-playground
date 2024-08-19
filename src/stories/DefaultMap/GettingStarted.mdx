@@ -2,7 +2,6 @@ import { Meta, Source } from '@storybook/addon-docs/blocks';
 
 import DefaultMap from './DefaultMap';
 
-import { code } from './code';
 
 <Meta title="Getting Started" />
 
@@ -42,7 +41,24 @@ Let's create a simple map with the default style.
 
 {/* show default map */}
 <DefaultMap/>
-<Source code={code} />
+<Source code={`
+import { AzureMap, AzureMapsProvider, IAzureMapOptions, AuthenticationType } from 'react-azure-maps';
+
+const option: IAzureMapOptions = {
+  authOptions: {
+    authType: AuthenticationType.subscriptionKey,
+    subscriptionKey: Your_Subscription_Key,
+  },
+};
+
+const DefaultMap = () => (
+  <AzureMapsProvider>
+    <div>
+      <AzureMap options={option} />
+    </div>
+  </AzureMapsProvider>
+);
+`} />
 
 ## Authentication
 
