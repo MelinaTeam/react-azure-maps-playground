@@ -14,7 +14,7 @@ const meta: Meta<typeof HtmlMarker> = {
     storySource: {
       source: `
 import { AzureMap, AzureMapHtmlMarker, AzureMapsProvider } from 'react-azure-maps';
-import { HtmlMarkerOptions, SymbolLayerOptions } from 'azure-maps-control';
+import { HtmlMarkerOptions } from 'azure-maps-control';
 
 const HtmlMarker = () => {
   return (

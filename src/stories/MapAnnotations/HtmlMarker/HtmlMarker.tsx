@@ -1,5 +1,5 @@
 import { AzureMap, AzureMapHtmlMarker, AzureMapsProvider } from 'react-azure-maps';
-import { HtmlMarkerOptions, SymbolLayerOptions } from 'azure-maps-control';
+import { HtmlMarkerOptions } from 'azure-maps-control';
 import { mapOptions } from '../../../key';
 
 const HtmlMarker = ({ color, text, position, draggable }: HtmlMarkerOptions) => {
