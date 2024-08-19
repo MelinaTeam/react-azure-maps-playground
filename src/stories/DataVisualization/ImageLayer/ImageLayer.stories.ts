@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ImageLayer from './ImageLayer';
 
 const meta: Meta<typeof ImageLayer> = {
-  title: 'Image Layer',
+  title: 'Data Visualization/Image Layer',
   component: ImageLayer,
   parameters: {
     storySource: {

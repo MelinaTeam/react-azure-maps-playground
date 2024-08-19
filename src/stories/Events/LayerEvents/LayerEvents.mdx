@@ -1,0 +1,71 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import LayerEvents from './LayerEvents';
+
+<Meta title="Events/Layer Events"/>
+
+# Layer Events
+The layer triggers events whenever the user interacts with it.<br/>
+For a complete list of available events, refer to the [Layer Events Sample](https://samples.azuremaps.com/symbol-layer/symbol-layer-events).
+
+> The symbol, bubble, line, and polygon layer all support the same set of events. <br/>
+> The heat map and tile layers don't support any of these events. 
+
+The example below shows how to listen for different mouse events on a bubble layer.<br/>
+**Try moving the mouse back and forth over the map**.<br/>
+You'll see the bubbles' color change as the mouse enters and leaves.
+
+<LayerEvents/>
+
+<Source code={`
+import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
+import atlas from 'azure-maps-control';
+import { useState } from 'react';
+
+// Generate data for the bubble layer
+const collection = generateRandomPoints();
+
+const LayerEvents = () => {
+  const [color, setColor] = useState('red');
+
+  const setRandomColor = () => {
+    // Generate a random color
+    const randomHex = Math.floor(Math.random() * 16777215).toString(16);
+    setColor(\`#\${randomHex.padStart(6, '0')}\`);
+  };
+
+  return (
+    <AzureMapsProvider>
+        <AzureMap options={mapOptions}>
+            <AzureMapDataSourceProvider id="BubbleLayer DataSourceProvider" collection={collection}>
+            <AzureMapLayerProvider
+                type="BubbleLayer"
+                options={{
+                radius: 16,
+                color,
+                }}
+                events={{
+                    mouseenter: setRandomColor,
+                    mouseleave: setRandomColor,
+                }}
+            />
+            </AzureMapDataSourceProvider>
+        </AzureMap>
+    </AzureMapsProvider>
+  );
+};
+
+function generateRandomPoints() {
+  var layerData = [];
+
+  for (var i = 0; i < 50; i++) {
+    layerData.push(
+      new atlas.data.Feature(new atlas.data.Point([Math.random() * 360 - 180, Math.random() * 170 - 85]), {
+        title: 'Pin_' + i,
+      }),
+    );
+  }
+
+  return layerData;
+}
+`}/>
+

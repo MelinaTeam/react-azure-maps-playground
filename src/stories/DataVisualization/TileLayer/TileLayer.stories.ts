@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import TileLayer from './TileLayer';
 
 const meta: Meta<typeof TileLayer> = {
-  title: 'Tile Layer',
+  title: 'Data Visualization/Tile Layer',
   component: TileLayer,
   parameters: {
     storySource: {
