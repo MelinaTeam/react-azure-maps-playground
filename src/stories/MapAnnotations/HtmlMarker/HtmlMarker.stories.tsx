@@ -8,6 +8,7 @@ const meta: Meta<typeof HtmlMarker> = {
     color: 'DodgerBlue',
     text: '10',
     position: [0, 0],
+    draggable: false,
   },
   parameters: {
     storySource: {
