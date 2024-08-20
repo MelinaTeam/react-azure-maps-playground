@@ -1,0 +1,24 @@
+.circle-marker.blink {
+  animation: blink-animation 0.7s infinite alternate;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0.5;
+    background-color: rgb(235, 167, 167);
+    box-shadow: 0 0 0 0 rgba(162, 4, 44, 0);
+  }
+  20% {
+    opacity: 0.7;
+    background-color: rgb(235, 167, 167);
+    box-shadow: 0 0 0 20px rgba(162, 4, 44, 0);
+  }
+  100% {
+    opacity: 1;
+    background-color: crimson;
+    box-shadow: 0 0 0 0 rgba(162, 4, 44, 0.6);
+  }
+}
+
+
+/*# sourceMappingURL=stories-Events-HtmlMarkerEvents-HtmlMarkerEvents-mdx.6ccfed8c.chunk.css.map*/
