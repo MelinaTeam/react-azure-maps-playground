@@ -29,9 +29,6 @@ return (
     </AzureMapsProvider>
   );
 };
-
-export default TileLayer;
-
 `,
     },
   },

@@ -52,11 +52,11 @@ const option: IAzureMapOptions = {
 };
 
 const DefaultMap = () => (
-  <AzureMapsProvider>
-    <div>
+  <div style={{width:'700px', height: '300px'}}>
+    <AzureMapsProvider>
       <AzureMap options={option} />
-    </div>
-  </AzureMapsProvider>
+    </AzureMapsProvider>
+  </div>
 );
 `} />
 
@@ -105,7 +105,7 @@ There are three main references that depend on the basic `Azure Maps API`:
     - See [Default Map](#create-a-map) as an example.
 #### AzureMapDataSourceProvider
     - provides the data source instance and references to the data source.
-    - See [Data Visualization]() for more usages.
+    - See [Data Visualization Introduction](/docs/data-visualization-introduction--docs) for more usages.
 #### AzureMapLayerProvider
     - provides the layer instance and references to the layer.
-    - See [Data Visualization]() and for more usages.
+    - See [Data Visualization](/docs/data-visualization-introduction--docs) for more usages.

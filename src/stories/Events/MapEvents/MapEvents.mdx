@@ -20,6 +20,7 @@ const MapEvents = () => {
   const [position, setPosition] = useState([0, 0]);
 
   const handleMapClick = (e: any) => {
+    // get the position of the click event
     setPosition(e.position);
   };
   const displayPosition = (position: number[]) => {
