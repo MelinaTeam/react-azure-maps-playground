@@ -12,16 +12,18 @@ Clustered points have four properties;
 - `point_count` - The number of points the cluster contains.
 - `point_count_abbreviated` - A string that abbreviates the point_count value if it is long. (i.e. 4,000 becomes 4K)
 
+For more information on clustering, see the tutorial [here](https://learn.microsoft.com/en-us/azure/azure-maps/clustering-point-data-web-sdk).
+
 You can observe the clusters by zooming in and out on the map.
 
 <ClusterAggregates showBubbles showNumbers/>
 
 In this example, we use a **Bubble Layer** to render the clusters as circles and a **Symbol Layer** to render the number of points in each cluster.
-For the bubble layer, we set the radius and the color to change based on the number of points in the cluster.
+For the bubble layer, we set the radius and the color to change based on the numbers of points in the clusters.
 
 <Source code={`
 const bubbleLayerOptions = {
-  //Scale the size of the clustered bubble based on the number of points inthe cluster.
+  //Scale the size of the clustered bubble based on the number of points in the cluster.
   radius: [
     'step',
     ['get', 'point_count'],
@@ -47,7 +49,7 @@ const bubbleLayerOptions = {
 };
 `}/>
 
-For the symbol layer, we set the text to be the point_count_abbreviated property of the cluster.
+For the symbol layer, we set the text to be the `point_count_abbreviated` property of the cluster.
 
 <Source code={`
 const symbolLayerOptions = {
@@ -71,38 +73,36 @@ import {
   AzureMapsProvider,
 } from 'react-azure-maps';
 
-const ClusterAggregates = ({ showBubbles, showNumbers }: ClusterAggregatesProps) => {
+const ClusterAggregates = () => {
   
   return (
       <AzureMapsProvider>
-        <div className="defaultMap">
-          <AzureMap options={your_option}>
-            <AzureMapDataSourceProvider
-              id="ClusterAggregates DataSourceProvider"
-              dataFromUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
-              options={{
-                //Tell the data source to cluster point data.
-                cluster: true,
-                //The radius in pixels to cluster points together.
-                clusterRadius: 45,
-                //The maximium zoom level in which clustering occurs.
-                //If you zoom in more than this, all points are rendered as symbols.
-                clusterMaxZoom: 15,
-              }}
-            >
-              <AzureMapLayerProvider
-                  id={'BubbleLayer LayerProvider'}
-                  options={bubbleLayerOptions}
-                  type="BubbleLayer"
-              ></AzureMapLayerProvider>
-              <AzureMapLayerProvider
-                  id={'NumberLayer2 LayerProvider'}
-                  options={symbolLayerOptions}
-                  type="SymbolLayer"
-              ></AzureMapLayerProvider>
-            </AzureMapDataSourceProvider>
-          </AzureMap>
-        </div>
+        <AzureMap options={...your_options, center: [-97, 39], zoom: 1.5, view: 'Auto',}>
+          <AzureMapDataSourceProvider
+            id="ClusterAggregates DataSourceProvider"
+            dataFromUrl="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+            options={{
+              //Tell the data source to cluster point data.
+              cluster: true,
+              //The radius in pixels to cluster points together.
+              clusterRadius: 45,
+              //The maximium zoom level in which clustering occurs.
+              //If you zoom in more than this, all points are rendered as symbols.
+              clusterMaxZoom: 15,
+            }}
+          >
+            <AzureMapLayerProvider
+                id={'BubbleLayer LayerProvider'}
+                options={bubbleLayerOptions}
+                type="BubbleLayer"
+            ></AzureMapLayerProvider>
+            <AzureMapLayerProvider
+                id={'NumberLayer2 LayerProvider'}
+                options={symbolLayerOptions}
+                type="SymbolLayer"
+            ></AzureMapLayerProvider>
+          </AzureMapDataSourceProvider>
+        </AzureMap>
       </AzureMapsProvider>
   );
 };

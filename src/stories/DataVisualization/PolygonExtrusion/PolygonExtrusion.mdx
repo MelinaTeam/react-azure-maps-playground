@@ -1,0 +1,21 @@
+import { Source, Meta } from '@storybook/blocks';
+
+import PolygonExtrusion from './PolygonExtrusion';
+
+import * as PolygonExtrusionStories from './PolygonExtrusion.stories';
+
+<Meta of={PolygonExtrusionStories}/>
+
+# Polygon Extrusion
+
+The polygon extrusion layer renders the areas of a **Polygon** and **MultiPolygon** features as extruded shapes.<br/> 
+The height and base properties of the polygon extrusion layer define the base distance from the ground and height of the extruded shape in meters.
+
+<PolygonExtrusion height={30}/>
+
+<Source code={`
+<AzureMapLayerProvider
+    type="PolygonExtrusionLayer"
+    options={{ height: 30 }}
+    />
+    `}/>

@@ -1,0 +1,106 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import HtmlMarkerEvents from './HtmlMarkerEvents';
+
+<Meta title="Events/HTML Marker Events"/>
+
+# HTML Marker Events
+
+The HTML Marker component triggers events whenever the user interacts with it.<br/>
+For a complete list of available events, refer to the [HTML Marker Events Sample](https://samples.azuremaps.com/html-markers/html-marker-layer-events).
+
+Below is an example of how to listen for drag events on an HTML marker.<br/>
+**Try dragging the markers** to see them blink.
+
+<HtmlMarkerEvents/>
+
+<Source code={`
+import { AzureMap, AzureMapsProvider, AzureMapHtmlMarker } from 'react-azure-maps';
+import './HtmlMarkerEvents.css';
+
+// generate random points
+const collection = generateRandomPoints();
+
+// content for the html marker
+const circleMarker = (
+  <div
+    className="circle-marker"
+    style={{
+      width: '25px',
+      height: '25px',
+      borderRadius: '50%',
+      backgroundColor: 'crimson',
+    }}
+  ></div>
+);
+
+const LayerEvents = () => {
+  // add class name to the marker to apply css animation
+  const startBlink = (e: any) => {
+    // access the marker through the event object
+    e.target.element.firstElementChild.className = 'circle-marker blink';
+  };
+  const stopBlink = (e: any) => {
+    e.target.element.firstElementChild.className = 'circle-marker';
+  };
+
+  return (
+    <AzureMapsProvider>
+        <AzureMap options={your_options}>
+          {collection.map((point: number[], index) => (
+            <AzureMapHtmlMarker
+              key={index}
+              options={{ position: point, draggable: true }}
+              markerContent={circleMarker}
+              events={[
+                {
+                  eventName: 'dragstart',
+                  callback: startBlink,
+                },
+                {
+                  eventName: 'dragend',
+                  callback: stopBlink,
+                },
+              ]}
+            />
+          ))}
+        </AzureMap>
+    </AzureMapsProvider>
+  );
+};
+
+function generateRandomPoints() {
+  var layerData = [];
+
+  for (var i = 0; i < 30; i++) {
+    layerData.push([Math.random() * 360 - 180, Math.random() * 170 - 85]);
+  }
+
+  return layerData;
+}
+`}/>
+
+<Source code={`
+/* HtmlMarkerEvents.css */
+
+.circle-marker.blink {
+  animation: blink-animation 0.5s infinite alternate;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0.5;
+    background-color: rgb(235, 167, 167);
+    box-shadow: 0 0 0 0 rgba(162, 4, 44, 0);
+  }
+  20% {
+    opacity: 0.7;
+    background-color: rgb(235, 167, 167);
+    box-shadow: 0 0 0 20px rgba(162, 4, 44, 0);
+  }
+  100% {
+    opacity: 1;
+    background-color: crimson;
+    box-shadow: 0 0 0 0 rgba(162, 4, 44, 0.6);
+  }
+}
+`}/>

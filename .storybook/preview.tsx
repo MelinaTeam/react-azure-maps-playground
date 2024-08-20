@@ -22,6 +22,8 @@ const preview: Preview = {
           '*',
           'Data Visualization',
           ['Introduction'],
+          'Events',
+          ['Map Events'],
         ],
       },
     },

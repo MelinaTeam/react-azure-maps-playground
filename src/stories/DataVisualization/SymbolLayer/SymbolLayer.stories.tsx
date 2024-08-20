@@ -4,9 +4,7 @@ import SymbolLayer from './SymbolLayer';
 const meta: Meta<typeof SymbolLayer> = {
   title: 'Data Visualization/Symbol Layer',
   component: SymbolLayer,
-  parameters: {
-    layout: 'centered',
-  },
+  parameters: {},
   args: {
     image: 'pin-round-blue',
     optionsSize: 1.3,
@@ -32,26 +30,24 @@ const SymbolLayer = () => {
 
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
-        <AzureMap options={your_options}>
-          <AzureMapDataSourceProvider id="SymbolLayer DataSourceProvider" collection={collection}>
-            <AzureMapLayerProvider
-              type="SymbolLayer"
-              options={{
-                iconOptions: {
-                  image: 'pin-round-blue',
-                  size: 1.3,
-                  anchor: 'center',
-                  offset: [0, 0],
-                },
-                textOptions: {
-                  textField: ['get', 'title'],
-                },
-              }}
-            />
-          </AzureMapDataSourceProvider>
-        </AzureMap>
-      </div>
+      <AzureMap options={your_options}>
+        <AzureMapDataSourceProvider id="SymbolLayer DataSourceProvider" collection={collection}>
+          <AzureMapLayerProvider
+            type="SymbolLayer"
+            options={{
+              iconOptions: {
+                image: 'pin-round-blue',
+                size: 1.3,
+                anchor: 'center',
+                offset: [0, 0],
+              },
+              textOptions: {
+                textField: ['get', 'title'],
+              },
+            }}
+          />
+        </AzureMapDataSourceProvider>
+      </AzureMap>
     </AzureMapsProvider>
   );
 };
@@ -111,32 +107,30 @@ const SymbolLayer = () => {
 
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
-        <AzureMap options={your_options}>
-          <AzureMapDataSourceProvider id="SymbolLayer DataSourceProvider" collection={collection}>
-            <AzureMapLayerProvider
-              type="SymbolLayer"
-              options={{
-                iconOptions: {
-                  image: 'pin-round-blue',
-                  size: 1.3,
-                  anchor: 'center',
-                  offset: [0, 0],
-                },
-                textOptions: {
-                  textField: ['get', 'title'],
-                  size: 12,
-                  offset: [0, 2],
-                  anchor: 'center',
-                  color: 'black',
-                  haloColor: 'white',
-                  haloWidth: 1
-                },
-              }}
-            />
-          </AzureMapDataSourceProvider>
-        </AzureMap>
-      </div>
+      <AzureMap options={your_options}>
+        <AzureMapDataSourceProvider id="SymbolLayer DataSourceProvider" collection={collection}>
+          <AzureMapLayerProvider
+            type="SymbolLayer"
+            options={{
+              iconOptions: {
+                image: 'pin-round-blue',
+                size: 1.3,
+                anchor: 'center',
+                offset: [0, 0],
+              },
+              textOptions: {
+                textField: ['get', 'title'],
+                size: 12,
+                offset: [0, 2],
+                anchor: 'center',
+                color: 'black',
+                haloColor: 'white',
+                haloWidth: 1
+              },
+            }}
+          />
+        </AzureMapDataSourceProvider>
+      </AzureMap>
     </AzureMapsProvider>
   );
 };

@@ -11,7 +11,6 @@ const meta: Meta<typeof Popup> = {
     },
   },
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `
 import { AzureMap, AzureMapsProvider, AzureMapPopup, IAzureMapPopup } from 'react-azure-maps';
@@ -20,15 +19,13 @@ const Popup = () => {
 
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
-        <AzureMap options={your_options}>
-          <AzureMapPopup
-            isVisible
-            options={{ position: [0, 0] }}
-            popupContent={<div style={{ padding: '20px' }}>Hello World</div>}
-          />
-        </AzureMap>
-      </div>
+      <AzureMap options={your_options}>
+        <AzureMapPopup
+          isVisible
+          options={{ position: [0, 0] }}
+          popupContent={<div style={{ padding: '20px' }}>Hello World</div>}
+        />
+      </AzureMap>
     </AzureMapsProvider>
   );
 };

@@ -2,7 +2,6 @@ import { Meta, Source } from '@storybook/addon-docs/blocks';
 
 import DefaultMap from './DefaultMap';
 
-import { code } from './code';
 
 <Meta title="Getting Started" />
 
@@ -42,7 +41,24 @@ Let's create a simple map with the default style.
 
 {/* show default map */}
 <DefaultMap/>
-<Source code={code} />
+<Source code={`
+import { AzureMap, AzureMapsProvider, IAzureMapOptions, AuthenticationType } from 'react-azure-maps';
+
+const option: IAzureMapOptions = {
+  authOptions: {
+    authType: AuthenticationType.subscriptionKey,
+    subscriptionKey: Your_Subscription_Key,
+  },
+};
+
+const DefaultMap = () => (
+  <div style={{width:'700px', height: '300px'}}>
+    <AzureMapsProvider>
+      <AzureMap options={option} />
+    </AzureMapsProvider>
+  </div>
+);
+`} />
 
 ## Authentication
 
@@ -89,7 +105,7 @@ There are three main references that depend on the basic `Azure Maps API`:
     - See [Default Map](#create-a-map) as an example.
 #### AzureMapDataSourceProvider
     - provides the data source instance and references to the data source.
-    - See [Data Visualization]() for more usages.
+    - See [Data Visualization Introduction](/docs/data-visualization-introduction--docs) for more usages.
 #### AzureMapLayerProvider
     - provides the layer instance and references to the layer.
-    - See [Data Visualization]() and for more usages.
+    - See [Data Visualization](/docs/data-visualization-introduction--docs) for more usages.

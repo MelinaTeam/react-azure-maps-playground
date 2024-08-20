@@ -1,0 +1,46 @@
+import MapEvents from './MapEvents';
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+
+<Meta title="Events/Map Events"/>
+# Map Events
+
+The Map component triggers events whenever the user interacts with the map.<br/>
+For a complete list of available events, refer to the [Map Events Sample](https://samples.azuremaps.com/map/map-events).
+
+The example below shows how to listen for a click event.<br/>
+When the user clicks on the map, a popup will display the coordinates of the clicked location.
+
+<MapEvents/>
+
+<Source code={`
+import { AzureMap, AzureMapsProvider, AzureMapPopup } from 'react-azure-maps';
+import { useState } from 'react';
+
+const MapEvents = () => {
+  const [position, setPosition] = useState([0, 0]);
+
+  const handleMapClick = (e: any) => {
+    // get the position of the click event
+    setPosition(e.position);
+  };
+  const displayPosition = (position: number[]) => {
+    // Format position as a string
+    // round to 4 decimal places
+    const longitude = \`\${Number(position[0]).toFixed(4)} °\${position[0] > 0 ? 'E' : 'W'}\`;
+    const latitude = \`\${Number(position[1]).toFixed(4)} °\${position[1] > 0 ? 'N' : 'S'}\`;
+    return \`\${longitude}, \${latitude}\`;
+  };
+
+  return (
+      <AzureMapsProvider>
+        <AzureMap options={your_options} events={{ click: handleMapClick }}>
+          <AzureMapPopup
+            isVisible
+            options={{ position: position }}
+            popupContent={<div style={{ padding: '20px' }}>{displayPosition(position)}</div>}
+          />
+        </AzureMap>
+      </AzureMapsProvider>
+  );
+};
+`}/>

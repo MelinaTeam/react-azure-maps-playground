@@ -1,4 +1,4 @@
-import { AzureMap, AzureMapsProvider, IAzureMapOptions, IAzureMapControls, AuthenticationType } from 'react-azure-maps';
+import { AzureMap, AzureMapsProvider, IAzureMapOptions, IAzureMapControls } from 'react-azure-maps';
 import { mapOptions } from '../../key';
 
 export interface DefaultMapProps {

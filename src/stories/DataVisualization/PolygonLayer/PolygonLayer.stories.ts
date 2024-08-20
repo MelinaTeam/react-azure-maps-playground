@@ -5,7 +5,6 @@ const meta: Meta<typeof PolygonLayer> = {
   title: 'Data Visualization/Polygon Layer',
   component: PolygonLayer,
   parameters: {
-    layout: 'centered',
     storySource: {
       source: `
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
@@ -25,14 +24,12 @@ const PolygonLayer = () => {
 
   return (
     <AzureMapsProvider>
-      <div className="defaultMap">
-        <AzureMap options={{ ...your_options, center: [12, 39], zoom: 0 }}>
-          <AzureMapDataSourceProvider id="PolygonLayer DataSourceProvider" collection={collection}>
-            <AzureMapLayerProvider type="PolygonLayer"  
-                                   options={{ fillColor: 'rgba(0, 0, 255, 0.5)', fillOpacity: 0.8, }} />
-          </AzureMapDataSourceProvider>
-        </AzureMap>
-      </div>
+      <AzureMap options={{ ...your_options, center: [12, 39], zoom: 0 }}>
+        <AzureMapDataSourceProvider id="PolygonLayer DataSourceProvider" collection={collection}>
+          <AzureMapLayerProvider type="PolygonLayer"  
+                                 options={{ fillColor: 'rgba(0, 0, 255, 0.5)', fillOpacity: 0.8, }} />
+        </AzureMapDataSourceProvider>
+      </AzureMap>
     </AzureMapsProvider>
   );
 };

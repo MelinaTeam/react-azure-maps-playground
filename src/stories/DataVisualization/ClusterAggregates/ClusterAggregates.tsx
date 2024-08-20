@@ -5,8 +5,7 @@ import {
   AzureMapsProvider,
   IAzureMapOptions,
 } from 'react-azure-maps';
-import { AuthenticationType } from 'azure-maps-control';
-import { key } from '../../../key';
+import { mapOptions } from '../../../key';
 
 export interface ClusterAggregatesProps {
   showBubbles: boolean;
@@ -14,10 +13,7 @@ export interface ClusterAggregatesProps {
 }
 
 const option: IAzureMapOptions = {
-  authOptions: {
-    authType: AuthenticationType.subscriptionKey,
-    subscriptionKey: key,
-  },
+  ...mapOptions,
   center: [-97, 39],
   zoom: 1.5,
   view: 'Auto',

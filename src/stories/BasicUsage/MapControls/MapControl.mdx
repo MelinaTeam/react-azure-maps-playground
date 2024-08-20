@@ -19,18 +19,16 @@ import {
 } from 'react-azure-maps';
 
 <AzureMapsProvider>
-  <div className="defaultMap">
-    <AzureMap
-      options={your_options}
-      controls={[
-        {
-          controlName: 'StyleControl',
-          controlOptions: { mapStyles: 'all' },
-          options: { position: 'top-right' } as ControlOptions,
-        },
-      ]}
-    />
-  </div>
+  <AzureMap
+    options={your_options}
+    controls={[
+      {
+        controlName: 'StyleControl',
+        controlOptions: { mapStyles: 'all' },
+        options: { position: 'top-right' } as ControlOptions,
+      },
+    ]}
+  />
 </AzureMapsProvider>;
 `}/>
 
@@ -45,17 +43,15 @@ import {
 } from 'react-azure-maps';
 
 <AzureMapsProvider>
-  <div className="defaultMap">
-    <AzureMap
-      options={your_options}
-      controls={[
-        {
-            controlName: 'ZoomControl',
-            options: { position: 'top-right' } as ControlOptions,
-        },
-      ]}
-    />
-  </div>
+  <AzureMap
+    options={your_options}
+    controls={[
+      {
+          controlName: 'ZoomControl',
+          options: { position: 'top-right' } as ControlOptions,
+      },
+    ]}
+  />
 </AzureMapsProvider>;
 `}/>
 
@@ -70,18 +66,16 @@ import {
 } from 'react-azure-maps';
 
 <AzureMapsProvider>
-  <div className="defaultMap">
-    <AzureMap
-      options={your_options}
-      controls={[
-        {
-            controlName: 'CompassControl',
-            controlOptions: { rotationDegreesDelta: 10, style: 'dark' },
-            options: { position: 'bottom-right' } as ControlOptions,
-        },
-      ]}
-    />
-  </div>
+  <AzureMap
+    options={your_options}
+    controls={[
+      {
+          controlName: 'CompassControl',
+          controlOptions: { rotationDegreesDelta: 10, style: 'dark' },
+          options: { position: 'bottom-right' } as ControlOptions,
+      },
+    ]}
+  />
 </AzureMapsProvider>;
 `}/>
 
@@ -96,18 +90,16 @@ import {
 } from 'react-azure-maps';
 
 <AzureMapsProvider>
-  <div className="defaultMap">
-    <AzureMap
-      options={your_options}
-      controls={[
-        {
-            controlName: 'PitchControl',
-            controlOptions: { pitchDegreesDelta: 10 },
-            options: { position: 'bottom-right' } as ControlOptions,
-        },
-      ]}
-    />
-  </div>
+  <AzureMap
+    options={your_options}
+    controls={[
+      {
+          controlName: 'PitchControl',
+          controlOptions: { pitchDegreesDelta: 10 },
+          options: { position: 'bottom-right' } as ControlOptions,
+      },
+    ]}
+  />
 </AzureMapsProvider>;
 `}/>
 
@@ -122,22 +114,20 @@ import {
 } from 'react-azure-maps';
 
 <AzureMapsProvider>
-  <div className="defaultMap">
-    <AzureMap
-      options={your_options}
-      controls={[
-        {
-            controlName: 'TrafficControl',
-            controlOptions: { incidents: true },
-            options: { position: 'top-left' } as ControlOptions,
-        },
-        {
-            controlName: 'TrafficLegendControl',
-            controlOptions: {},
-            options: { position: 'bottom-left' } as ControlOptions,
-        },
-      ]}
-    />
-  </div>
+  <AzureMap
+    options={your_options}
+    controls={[
+      {
+          controlName: 'TrafficControl',
+          controlOptions: { incidents: true },
+          options: { position: 'top-left' } as ControlOptions,
+      },
+      {
+          controlName: 'TrafficLegendControl',
+          controlOptions: {},
+          options: { position: 'bottom-left' } as ControlOptions,
+      },
+    ]}
+  />
 </AzureMapsProvider>;
 `}/>
