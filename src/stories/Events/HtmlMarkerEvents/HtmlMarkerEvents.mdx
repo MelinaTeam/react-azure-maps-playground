@@ -9,7 +9,8 @@ The HTML Marker component triggers events whenever the user interacts with it.<b
 For a complete list of available events, refer to the [HTML Marker Events Sample](https://samples.azuremaps.com/html-markers/html-marker-layer-events).
 
 Below is an example of how to listen for drag events on an HTML marker.<br/>
-**Try dragging the markers** to see them blink.
+In this example, CSS animations are used to make the marker blink while it is being dragged.
+**Try dragging the markers** to see the effect.
 
 <HtmlMarkerEvents/>
 
@@ -17,10 +18,10 @@ Below is an example of how to listen for drag events on an HTML marker.<br/>
 import { AzureMap, AzureMapsProvider, AzureMapHtmlMarker } from 'react-azure-maps';
 import './HtmlMarkerEvents.css';
 
-// generate random points
+// Generate random points
 const collection = generateRandomPoints();
 
-// content for the html marker
+// Content for the HTML marker
 const circleMarker = (
   <div
     className="circle-marker"
@@ -34,9 +35,9 @@ const circleMarker = (
 );
 
 const LayerEvents = () => {
-  // add class name to the marker to apply css animation
+  // Add class name to the marker to apply CSS animation
   const startBlink = (e: any) => {
-    // access the marker through the event object
+    // Access the marker through the event object
     e.target.element.firstElementChild.className = 'circle-marker blink';
   };
   const stopBlink = (e: any) => {

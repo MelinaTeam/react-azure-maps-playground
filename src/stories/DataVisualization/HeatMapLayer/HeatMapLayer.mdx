@@ -7,7 +7,7 @@ import HeatMapLayer from './HeatMapLayer';
 # Heat Map Layer
 
 A heat map layer can be used to visualize the density of point data on the map.<br/>
-Following code shows how to add a simple heat map layer. A thorough tutorial can be found [here](https://learn.microsoft.com/en-us/azure/azure-maps/map-add-heat-map-layer).<br/>
+The following code shows how to add a simple heat map layer. A thorough tutorial can be found [here](https://learn.microsoft.com/en-us/azure/azure-maps/map-add-heat-map-layer).<br/>
 For more available properties, see the documentation [HeatMapLayerOptions](https://learn.microsoft.com/en-us/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-maps-typescript-latest).   
 
 <HeatMapLayer radius={10}/>
@@ -16,14 +16,14 @@ For more available properties, see the documentation [HeatMapLayerOptions](https
 <AzureMapLayerProvider
     type="HeatLayer"
     options={{
-        radius={10},
-        opacity={1},
-        intensity={1},
+        radius: 10,
+        opacity: 1,
+        intensity: 1,
     }}
 />
 `}/>
 
-## color
+## Color
 You can customize the color of the heat map layer by passing the `color` prop like this: <br/>
 
 <HeatMapLayer 
@@ -60,10 +60,10 @@ You can customize the color of the heat map layer by passing the `color` prop li
 />
 `}/>
 
-## weight
+## Weight
 Specifies how much an individual data point contributes to the heatmap. <br/>
-Must be a number greater than 0. Default `1`.<br/>
-In our example, we set the weight based on "mag" property of the earthquake data. <br/>
+Must be a number greater than 0. Default is `1`.<br/>
+In our example, we set the weight based on the "mag" property of the earthquake data. <br/>
 
 <HeatMapLayer
   radius={10}
@@ -91,7 +91,7 @@ In our example, we set the weight based on "mag" property of the earthquake data
         10,
         1,
     ]}
-/>;
+/>
 `}/>
 
 
