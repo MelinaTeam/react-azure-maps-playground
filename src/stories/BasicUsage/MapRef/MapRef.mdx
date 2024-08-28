@@ -18,7 +18,7 @@ const YourComponent = () => {
 
     useEffect(() => {
         if (isMapReady && mapRef)
-            // do something with mapRef
+            // Do something with mapRef
     }, [isMapReady]);
 
     return (
@@ -27,7 +27,7 @@ const YourComponent = () => {
 }
 `}/>
 
-Remember to wrap your component with AzureMapsProvider to provide the necessary context:
+Remember to wrap your component with AzureMapsProvider to provide the necessary context.
 
 <Source code={`
 import { AzureMapsProvider } from 'react-azure-maps';
@@ -44,7 +44,7 @@ const NewComponent = () => {
 
 ## Examples
 Here are two examples of how to use the `mapRef` to change the map's display. <br/>
-Only codes refering to the usage of `mapRef` are shown here. Don't forget to wrap your component with `AzureMapsProvider` when implementing the examples!
+Only codes referring to the usage of `mapRef` are shown here. Don't forget to wrap your component with `AzureMapsProvider` when implementing the examples!
 
 In the first example, we use the `setCamera()` function to change the center of the map. <br/>
 Click the button to see the effect.
@@ -64,7 +64,7 @@ const SetCenter = () => {
   // Set the map center when the map is ready or when the map center changes.
   useEffect(() => {
     if (isMapReady && mapRef)
-      // set map center
+      // Set map center
       mapRef.setCamera({ center: mapCenter });
   }, [isMapReady, mapCenter]);
 
@@ -107,7 +107,7 @@ const SetStyle = () => {
   //Set the tile boundaries when the map is ready or when the showTileBoundaries state changes
   useEffect(() => {
     if (isMapReady && mapRef)
-      // toggle tile boundaries
+      // Toggle tile boundaries
       mapRef.setStyle({ showTileBoundaries });
   }, [isMapReady, showTileBoundaries]);
 

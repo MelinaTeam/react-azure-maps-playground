@@ -1,5 +1,5 @@
 import { Meta, Source } from '@storybook/blocks';
-import ClusterAggregates from './ClusterAggregates/ClusterAggregates'
+import ClusterAggregates from './ClusterAggregates/ClusterAggregates';
 
 <Meta title="Data Visualization/Introduction"/>
 
@@ -8,9 +8,9 @@ import ClusterAggregates from './ClusterAggregates/ClusterAggregates'
 
 <ClusterAggregates showBubbles showNumbers/>
 
-We will need 2 kinds of components to visualize data on a map:
-1. `<AzureMapDataSourceProvider>` : to provide your data to the map.
-2. `<AzureMapLayerProvider>` : to create a visualization layer on the map based on your data.
+We will need two kinds of components to visualize data on a map:
+1. `<AzureMapDataSourceProvider>`: to provide your data to the map.
+2. `<AzureMapLayerProvider>`: to create a visualization layer on the map based on your data.
 
 Therefore, the basic structure of a data visualization component is as follows:
 
@@ -18,21 +18,16 @@ Therefore, the basic structure of a data visualization component is as follows:
 import { AzureMap, AzureMapsProvider, AzureMapDataSourceProvider, AzureMapLayerProvider } from 'react-azure-maps';
 
 const Your_Component = () => {
-    return (
-        <AzureMapsProvider>
-            <AzureMap options={your_options}>
-                <AzureMapDataSourceProvider 
-                    id="your_layer_id" 
-                    collection={your_data}>
-                    <AzureMapLayerProvider
-                        type="layer_type"
-                        options={your_layer_options}
-                    />
-                </AzureMapDataSourceProvider>
-            </AzureMap>
-        </AzureMapsProvider>
-    )
-}
+  return (
+    <AzureMapsProvider>
+      <AzureMap options={your_options}>
+        <AzureMapDataSourceProvider id="your_layer_id" collection={your_data}>
+          <AzureMapLayerProvider type="layer_type" options={your_layer_options} />
+        </AzureMapDataSourceProvider>
+      </AzureMap>
+    </AzureMapsProvider>
+  );
+};
 `} />
 ## Create a data source
 To create a data source, you can pass the data to the `collection` prop in various ways: <br/>
@@ -70,4 +65,4 @@ You can also provide the data by passing the `dataFromUrl` prop like this: <br/>
 
 <br/>
 Now that you have created a data source, you can create a visualization layer on the map. <br/>
-See expamples below for further details.
+See examples below for further details.

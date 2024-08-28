@@ -5,10 +5,10 @@ import ClusterAggregates from './ClusterAggregates';
 <Meta title="Data Visualization/Cluster Aggregates"/>
 
 # Cluster Aggregates
-This example shows how to enable point based clustering on a data source and render them differently from individual points on the map.
-Clustered points have four properties;
+This example shows how to enable point-based clustering on a data source and render them differently from individual points on the map.
+Clustered points have four properties:
 - `cluster` - A boolean value indicating that it is a cluster.
-- `cluster_id` - A unique id for the cluster which can be used with the DataSource getClusterExpansionZoom, getClusterChildren, and getClusterLeaves functions.
+- `cluster_id` - A unique ID for the cluster which can be used with the DataSource getClusterExpansionZoom, getClusterChildren, and getClusterLeaves functions.
 - `point_count` - The number of points the cluster contains.
 - `point_count_abbreviated` - A string that abbreviates the point_count value if it is long. (i.e. 4,000 becomes 4K)
 
@@ -34,7 +34,7 @@ const bubbleLayerOptions = {
     40, //If point_count >= 750, radius is 40 pixels.
   ],
 
-  //Change the color of the cluster based on the value on the point_cluster property of the cluster.
+  //Change the color of the cluster based on the value of the point_cluster property of the cluster.
   color: [
     'step',
     ['get', 'point_count'],
@@ -45,7 +45,7 @@ const bubbleLayerOptions = {
     'rgba(255,0,0,0.8)', //If the point_count >= 100, color is red.
   ],
   strokeWidth: 0,
-  filter: ['has', 'point_count'], //Only rendered data points which have a point_count property, which clusters do.
+  filter: ['has', 'point_count'], //Only render data points which have a point_count property, which clusters do.
 };
 `}/>
 
@@ -86,7 +86,7 @@ const ClusterAggregates = () => {
               cluster: true,
               //The radius in pixels to cluster points together.
               clusterRadius: 45,
-              //The maximium zoom level in which clustering occurs.
+              //The maximium zoom level at which clustering occurs.
               //If you zoom in more than this, all points are rendered as symbols.
               clusterMaxZoom: 15,
             }}
