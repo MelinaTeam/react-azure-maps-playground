@@ -6,6 +6,7 @@ import { Story, Canvas } from '@storybook/addon-docs';
 
 const preview: Preview = {
   parameters: {
+    layout: 'centered',
     controls: {
       matchers: {
         color: /(background|color)$/i,
