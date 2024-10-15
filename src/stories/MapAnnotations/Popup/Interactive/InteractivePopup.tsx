@@ -1,27 +1,37 @@
-import { useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState, ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
 import atlas from 'azure-maps-control';
-import { IAzureMapsContextProps, MapType, IAzureMapPopup, AzureMapsContext } from 'react-azure-maps';
+import { IAzureMapsContextProps, AzureMapsContext, IAzureMapPopupEvent } from 'react-azure-maps';
 
-const InteractivePopup = ({ isVisible, popupContent, options, events }: IAzureMapPopup) => {
+interface InteractivePopupProps {
+  children: ReactNode;
+  isVisible?: boolean;
+  options?: atlas.PopupOptions;
+  events?: IAzureMapPopupEvent[];
+}
+
+const InteractivePopup = ({ children, isVisible = true, options, events }: InteractivePopupProps) => {
   const { mapRef } = useContext<IAzureMapsContextProps>(AzureMapsContext);
   const containerRef = document.createElement('div');
   const root = createRoot(containerRef);
-
   const [popupRef] = useState<atlas.Popup>(new atlas.Popup({ ...options, content: containerRef }));
 
-  useCheckRefMount<MapType, boolean>(mapRef, true, (mref) => {
-    events &&
-      events.forEach(({ eventName, callback }) => {
-        mref.events.add(eventName, popupRef, callback);
-      });
-    return () => {
-      mref.popups.remove(popupRef);
-    };
-  });
-
+  // Add events to the popup when it is mounted
   useEffect(() => {
-    root.render(popupContent);
+    if (mapRef) {
+      events &&
+        events.forEach(({ eventName, callback }) => {
+          mapRef.events.add(eventName, popupRef, callback);
+        });
+      return () => {
+        mapRef.popups.remove(popupRef);
+      };
+    }
+  }, []);
+
+  // Render the popup content and set the options
+  useEffect(() => {
+    root.render(children);
     popupRef.setOptions({
       ...options,
       content: containerRef,
@@ -29,8 +39,9 @@ const InteractivePopup = ({ isVisible, popupContent, options, events }: IAzureMa
     if (mapRef && isVisible && !popupRef.isOpen()) {
       popupRef.open(mapRef);
     }
-  }, [options, popupContent]);
+  }, [options, children]);
 
+  // Toggle the popup visibility
   useEffect(() => {
     if (mapRef) {
       if (isVisible && !popupRef.isOpen()) {
@@ -43,13 +54,5 @@ const InteractivePopup = ({ isVisible, popupContent, options, events }: IAzureMa
 
   return null;
 };
-
-function useCheckRefMount<T, T1>(dep: T | null, on: T1 | null, callback: (dep: T, on: T1) => void) {
-  useEffect(() => {
-    if (dep && on) {
-      return callback(dep, on);
-    }
-  }, []);
-}
 
 export default InteractivePopup;

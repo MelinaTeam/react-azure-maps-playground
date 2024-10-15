@@ -4,20 +4,30 @@ import InteractivePopup from './InteractivePopup';
 import PopupContent from './PopupContent';
 import { useState } from 'react';
 
-const Popup = ({ isVisible, options }: IAzureMapPopup) => {
-  const [text, setText] = useState('Hello World');
+const InteractivePopupExample = ({ isVisible, options }: IAzureMapPopup) => {
+  const [bgColor, setBgColor] = useState('white');
 
-  // use position as argument would be better
+  // click to change color randomly
+  const changeColor = () => {
+    const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    setBgColor(color);
+  };
   return (
     <AzureMapsProvider>
-      <div className="defaultMap sb-unstyled">
-        <button onClick={() => setText(text + '1')}>Change text</button>
-        <AzureMap options={mapOptions}>
-          <InteractivePopup isVisible={isVisible} options={options} popupContent={<PopupContent text={text} />} />
-        </AzureMap>
+      <div>
+        <button onClick={changeColor} style={{ marginBottom: '10px' }}>
+          Change popup color
+        </button>
+        <div className="defaultMap sb-unstyled">
+          <AzureMap options={mapOptions}>
+            <InteractivePopup isVisible={isVisible} options={options}>
+              <PopupContent bgColor={bgColor} />
+            </InteractivePopup>
+          </AzureMap>
+        </div>
       </div>
     </AzureMapsProvider>
   );
 };
 
-export default Popup;
+export default InteractivePopupExample;

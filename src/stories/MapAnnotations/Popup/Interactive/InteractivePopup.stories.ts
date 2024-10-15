@@ -13,21 +13,61 @@ const meta: Meta<typeof InteractivePopup> = {
   parameters: {
     storySource: {
       source: `
-import { AzureMap, AzureMapsProvider, AzureMapPopup, IAzureMapPopup } from 'react-azure-maps';
+import { useContext, useEffect, useState, ReactNode } from 'react';
+import { createRoot } from 'react-dom/client';
+import atlas from 'azure-maps-control';
+import { IAzureMapsContextProps, AzureMapsContext, IAzureMapPopupEvent } from 'react-azure-maps';
 
-const Popup = () => {
+interface InteractivePopupProps {
+  children: ReactNode;
+  isVisible?: boolean;
+  options?: atlas.PopupOptions;
+  events?: IAzureMapPopupEvent[];
+};
 
-  return (
-    <AzureMapsProvider>
-      <AzureMap options={your_options}>
-        <AzureMapPopup
-          isVisible
-          options={{ position: [0, 0] }}
-          popupContent={<div style={{ padding: '20px' }}>Hello World</div>}
-        />
-      </AzureMap>
-    </AzureMapsProvider>
-  );
+const InteractivePopup = ({ children, isVisible = true, options, events }: InteractivePopupProps) => {
+  const { mapRef } = useContext<IAzureMapsContextProps>(AzureMapsContext);
+  const containerRef = document.createElement('div');
+  const root = createRoot(containerRef);
+  const [popupRef] = useState<atlas.Popup>(new atlas.Popup({ ...options, content: containerRef }));
+
+  // Add events to the popup when it is mounted
+  useEffect(() => {
+    if (mapRef) {
+      events &&
+        events.forEach(({ eventName, callback }) => {
+          mapRef.events.add(eventName, popupRef, callback);
+        });
+      return () => {
+        mapRef.popups.remove(popupRef);
+      };
+    }
+  }, []);
+
+  // Render the popup content and set the options
+  useEffect(() => {
+    root.render(children);
+    popupRef.setOptions({
+      ...options,
+      content: containerRef,
+    });
+    if (mapRef && isVisible && !popupRef.isOpen()) {
+      popupRef.open(mapRef);
+    }
+  }, [options, children]);
+
+  // Toggle the popup visibility
+  useEffect(() => {
+    if (mapRef) {
+      if (isVisible && !popupRef.isOpen()) {
+        popupRef.open(mapRef);
+      } else if (mapRef.popups.getPopups().length && !isVisible && popupRef.isOpen()) {
+        popupRef.close();
+      }
+    }
+  }, [isVisible]);
+
+  return null;
 };
 `,
     },
