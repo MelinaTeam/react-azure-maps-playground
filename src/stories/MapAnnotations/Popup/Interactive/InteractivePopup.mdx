@@ -1,0 +1,169 @@
+import { Meta, Source } from '@storybook/blocks';
+
+import * as InteractivePopupStories from './InteractivePopup.stories';
+
+import InteractivePopup from './InteractivePopupExample';
+
+<Meta of={InteractivePopupStories} />
+
+# Interactive Popup
+Besides the static popup, you can also create an interactive popup containing React components.<br/>
+Therefore, you can easily change the states of the components both inside and outside the popup.<br/>
+## Example
+Here is an example of an interactive popup that shows a counter counting the number of times the user has clicked on the popup.<br/>
+You can also change the popup's color by clicking the button on the top left corner.
+
+<InteractivePopup isVisible options={{ position: [0, 0] }}  />
+
+
+Let's take a look of how the interactive popup is implemented.<br/>
+## Implementation
+### 1. Create an interactive popup component
+Here we initialize a new Popup instance and render the React node children for the popup's content.<br/>
+
+<Source code={`
+import { useContext, useEffect, useState, ReactNode } from 'react';
+import { createRoot } from 'react-dom/client';
+import atlas from 'azure-maps-control';
+import { IAzureMapsContextProps, AzureMapsContext, IAzureMapPopupEvent } from 'react-azure-maps';
+
+interface InteractivePopupProps {
+  children: ReactNode;
+  isVisible?: boolean;
+  options?: atlas.PopupOptions;
+  events?: IAzureMapPopupEvent[];
+}
+
+const InteractivePopup = ({ children, isVisible = true, options, events }: InteractivePopupProps) => {
+  const { mapRef } = useContext<IAzureMapsContextProps>(AzureMapsContext);
+  const containerRef = document.createElement('div');
+  const root = createRoot(containerRef);
+  const [popupRef] = useState<atlas.Popup>(new atlas.Popup({ ...options, content: containerRef }));
+
+  // Add events to the popup when it is mounted
+  useEffect(() => {
+    if (mapRef) {
+      events &&
+        events.forEach(({ eventName, callback }) => {
+          mapRef.events.add(eventName, popupRef, callback);
+        });
+      return () => {
+        mapRef.popups.remove(popupRef);
+      };
+    }
+  }, []);
+
+  // Render the popup content and set the options
+  useEffect(() => {
+    root.render(children);
+    popupRef.setOptions({
+      ...options,
+      content: containerRef,
+    });
+    if (mapRef && isVisible && !popupRef.isOpen()) {
+      popupRef.open(mapRef);
+    }
+  }, [options, children]);
+
+  // Toggle the popup visibility
+  useEffect(() => {
+    if (mapRef) {
+      if (isVisible && !popupRef.isOpen()) {
+        popupRef.open(mapRef);
+      } else if (mapRef.popups.getPopups().length && !isVisible && popupRef.isOpen()) {
+        popupRef.close();
+      }
+    }
+  }, [isVisible]);
+
+  return null;
+};
+
+export default InteractivePopup;
+
+`} />
+
+### 2. Create your popup content
+In this example we create a simple counter component that increments the count when the user clicks on the popup.<br/>
+Also, it accepts a background color as a prop to change the popup's color.<br/>
+**You can create any kind of React component as the popup content.**
+
+<Source code={`
+import { useState } from 'react';
+
+const PopupContent = ({ bgColor }: { bgColor: string }) => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div style={{ padding: '10px', backgroundColor: bgColor, textAlign: 'center' }}>
+      <h3>This is a counter:</h3>
+      <p>You have clicked {count} times.</p>
+      <button
+        style={{
+          border: '1px',
+          padding: '4px',
+          cursor: 'pointer',
+          backgroundColor: 'gainsboro',
+        }}
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        Click me
+      </button>
+      <button
+        style={{
+          border: '1px',
+          padding: '4px',
+          cursor: 'pointer',
+          color: 'blue',
+          backgroundColor: 'transparent',
+        }}
+        onClick={() => {
+          setCount(0);
+        }}
+      >
+        Reset
+      </button>
+    </div>
+  );
+};
+
+export default PopupContent;
+`}/>
+
+### 3. Use the interactive popup
+Finally, you can use the interactive popup component on your map and pass your react component as children.<br/>
+
+<Source code={`
+import { AzureMap, AzureMapsProvider } from 'react-azure-maps';
+import InteractivePopup from './InteractivePopup';
+import PopupContent from './PopupContent';
+import { useState } from 'react';
+
+const YourMap = () => {
+  const [bgColor, setBgColor] = useState('white');
+
+  // click to change color randomly
+  const changeColor = () => {
+    const color = \`#\${Math.floor(Math.random() * 16777215).toString(16)}\`;
+    setBgColor(color);
+  };
+  return (
+    <AzureMapsProvider>
+      <div>
+        <button onClick={changeColor} style={{ marginBottom: '10px' }}>
+          Change popup color
+        </button>
+        <div style={...}>
+          <AzureMap options={yourOptions}>
+            <InteractivePopup isVisible options={{ position: [0, 0] }}>
+              <PopupContent bgColor={bgColor} />
+            </InteractivePopup>
+          </AzureMap>
+        </div>
+      </div>
+    </AzureMapsProvider>
+  );
+};
+`} />
