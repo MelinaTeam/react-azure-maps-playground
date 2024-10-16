@@ -1,5 +1,4 @@
 import { AzureMap, AzureMapsProvider, AzureMapPopup, IAzureMapPopup } from 'react-azure-maps';
-import PopupContent from '../Interactive/PopupContent';
 import { mapOptions } from '../../../../key';
 
 const Popup = ({ isVisible, options }: IAzureMapPopup) => {
@@ -12,7 +11,6 @@ const Popup = ({ isVisible, options }: IAzureMapPopup) => {
             isVisible={isVisible}
             options={options}
             popupContent={<div style={{ padding: '20px' }}>Hello World</div>}
-            // popupContent={<PopupContent />}
           />
         </AzureMap>
       </div>
