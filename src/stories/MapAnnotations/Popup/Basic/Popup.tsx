@@ -1,5 +1,5 @@
 import { AzureMap, AzureMapsProvider, AzureMapPopup, IAzureMapPopup } from 'react-azure-maps';
-import { mapOptions } from '../../../key';
+import { mapOptions } from '../../../../key';
 
 const Popup = ({ isVisible, options }: IAzureMapPopup) => {
   // use position as argument would be better
