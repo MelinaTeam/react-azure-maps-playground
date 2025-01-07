@@ -131,3 +131,49 @@ import {
   />
 </AzureMapsProvider>;
 `}/>
+
+## Scale Control
+
+<MapControl controls={[controls[6]]}/>
+<Source code={`
+import {
+  ControlOptions,
+  AzureMapsProvider,
+  AzureMap,
+} from 'react-azure-maps'; 
+
+<AzureMapsProvider>
+  <AzureMap
+    options={your_options}
+    controls={[
+      {
+          controlName: 'ScaleControl',
+          options: { position: 'bottom-left' } as ControlOptions,
+      },
+    ]}
+  />
+</AzureMapsProvider>;
+`}/>
+
+## Fullscreen Control
+
+<MapControl controls={[controls[7]]}/>
+<Source code={`
+import {
+  ControlOptions,
+  AzureMapsProvider,
+  AzureMap,
+} from 'react-azure-maps';
+
+<AzureMapsProvider>
+  <AzureMap
+    options={your_options}
+    controls={[
+      {
+          controlName: 'FullscreenControl',
+          options: { position: 'top-right' } as ControlOptions,
+      },
+    ]}
+  />
+</AzureMapsProvider>;
+`}/>
