@@ -36,6 +36,16 @@ export const controls: IAzureMapControls[] = [
     controlOptions: {},
     options: { position: 'bottom-left' } as ControlOptions,
   },
+  {
+    controlName: 'ScaleControl',
+    controlOptions: {},
+    options: { position: 'bottom-left' } as ControlOptions,
+  },
+  {
+    controlName: 'FullscreenControl',
+    controlOptions: {},
+    options: { position: 'top-right' } as ControlOptions,
+  }
 ];
 
 const MapControl = ({ controls }: ControlProps) => {
